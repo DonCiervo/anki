@@ -1,0 +1,152 @@
+<!--==============================================================================
+ * French Conjugation in Anki using randomized cloze cards
+ * by Julian Hirsch | @DonCiervo
+ * 
+ * Inspired by Andy's Ultimate Conjugation | http://www.asiteaboutnothing.net
+ * Randomized Display adapted from Hikaru | @hikaru-y
+ * Persistent variables using anki-persistence | @SimonLammer
+==============================================================================-->
+
+<script src="_minified.js"></script>
+
+<div class="topbar"></div>
+
+<fieldset class="front"><legend></legend>
+<!--<div class="flaginline {{Tags}}"></div>-->
+</fieldset>
+
+<div class="back bkleft">
+
+{{#Prompt}}<div class="header caps" style="font-size: 110%">{{Prompt}}</div><br>{{/Prompt}}
+
+<div class="singleframed">
+
+<div id="fields-output"></div>
+
+<div class="field" hidden>{{cloze:Sentence-1}}</div>
+<div class="field" hidden>{{cloze:Sentence-2}}</div>
+<div class="field" hidden>{{cloze:Sentence-3}}</div>
+<div class="field" hidden>{{cloze:Sentence-4}}</div>
+<div class="field" hidden>{{cloze:Sentence-5}}</div>
+<div class="field" hidden>{{cloze:Sentence-6}}</div>
+<div class="field" hidden>{{cloze:Sentence-7}}</div>
+<div class="field" hidden>{{cloze:Sentence-8}}</div>
+<div class="field" hidden>{{cloze:Sentence-9}}</div>
+<div class="field" hidden>{{cloze:Sentence-10}}</div>
+<div class="field" hidden>{{cloze:Sentence-11}}</div>
+<div class="field" hidden>{{cloze:Sentence-12}}</div>
+<div class="field" hidden>{{cloze:Sentence-13}}</div>
+<div class="field" hidden>{{cloze:Sentence-14}}</div>
+<div class="field" hidden>{{cloze:Sentence-15}}</div>
+<div class="field" hidden>{{cloze:Sentence-16}}</div>
+</div>
+
+{{#Rule}}
+
+<br>
+
+<div class="extra_toggle left_100" id="extra_toggle_on_button" onclick="showextra()">
+<div style="font-weight:bold; text-decoration: none; color: darkgrey">{{Concept}}</div>
+</div>
+
+<div class="extra_toggle left_100" id="extrafield" onclick="hideextra()" style="display:none">
+
+<!--&#x26A0-->
+<div style="font-weight:bold; text-decoration: underline;">{{Concept}}</div>
+{{Rule}}
+{{/Rule}}
+
+</div>
+
+</div>
+
+
+<script>
+/*----------------------------------------- Choose random field FOR SAME CLOZES
+script thanks to hkr
+https://forums.ankiweb.net/t/is-it-even-possible-to-persist-javascript-variables-on-ankidroid/19820/2
+*/
+{
+    const fieldCount = 1;
+    const fieldsContainer = document.getElementById("fields-output");
+    const fields = [...document.querySelectorAll(".field")];
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    let randomIndexes;
+    // old persistance
+		if (sessionStorage.getItem("randomIndexes")) {
+        randomIndexes = JSON.parse(sessionStorage.getItem("randomIndexes"));
+        // sessionStorage.clear();
+    }
+		/*
+    if (Persistence.getItem("randomIndexes")) {
+        randomIndexes = JSON.parse(Persistence.getItem("randomIndexes"));
+        Persistence.clear();
+    }
+		*/
+    else {
+        // Previewer(if Back Side Only) and Card Layout Editor(Back Template)
+        const availableFieldIndexes = fields.reduce((prev, current, index) => {
+            if (current.textContent.trim()) {
+                prev.push(index);
+            }
+            return prev;
+        }, []);
+        shuffleArray(availableFieldIndexes);
+        randomIndexes = availableFieldIndexes.slice(0, fieldCount);
+    }
+    for (const index of randomIndexes) {
+        fieldsContainer.appendChild(fields[index]);
+        fields[index].hidden = false;
+    }
+}
+
+// --- test
+// window.back.appendChild(document.createTextNode(randomIndexes));
+
+</script>
+
+
+
+
+<!-- Use pronoun selection from front -->
+<div id="back"></div>
+<script>
+
+var pronouns = document.getElementsByClassName("pronouns");
+var pron = pronouns;
+
+var appendum = document.getElementsByClassName("appendum");
+var app = appendum;
+
+pron = Persistence.getItem("pron");
+app = Persistence.getItem("app");
+
+pronouns[0].innerHTML = pron;
+appendum[0].innerHTML = app;
+
+Persistence.clear();
+sessionStorage.clear();
+
+// --- test
+//window.back.appendChild(document.createTextNode(pron));
+//window.back.appendChild(document.createTextNode(app));
+</script>
+
+
+
+
+<script>
+ function showextra() {
+  document.getElementById("extrafield").style.display = "block";
+  document.getElementById("extra_toggle_on_button").style.display = "none";
+}
+ function hideextra() {
+  document.getElementById("extrafield").style.display = "none";
+  document.getElementById("extra_toggle_on_button").style.display = "block";
+}
+</script>
