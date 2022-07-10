@@ -1,5 +1,3 @@
-<div id="front"></div>
-<script>
 var pronouns = document.getElementsByClassName("cloze_pronoun");
 var arr = pronouns[0].innerHTML.split("/");
 var replacement = pronouns;
@@ -12,4 +10,3 @@ if (Persistence.isAvailable()) {
 }
 
 pronouns[0].innerHTML = replacement;
-</script>
