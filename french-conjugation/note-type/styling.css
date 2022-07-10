@@ -1,0 +1,310 @@
+/*==============================================================================
+ * French Conjugation in Anki using randomized cloze cards
+ * by Julian Hirsch | @DonCiervo
+ * 
+ * 1.0.0
+ * 
+ * Inspired by Andy's Ultimate Conjugation | http://www.asiteaboutnothing.net
+ * Randomized Display adapted from Hikaru | @hikaru-y
+ * Persistent variables using anki-persistence | @SimonLammer
+==============================================================================*/
+
+/* Quick configuration: 
+    Customize the color scheme and set the flag (and its dimensions) you want from your media folder */
+
+:root {
+  --main-color: darkblue;
+  --accent-color: white;
+  --flag: url(_FranceFlag.png);
+  --flagwidth: 64px;
+  --flagheight: 40px;
+  --cardwidth: 450px;
+  --font-size: 22px;
+  --line-height: 32px;
+  --background: #ffecb3;
+  --font-family: ;
+}
+
+
+/*-------------------------------------------------------------------*/
+
+:root {--borderstroke: 0px;}
+
+/* Paragraphs and Styles */
+.card {font-family: var(--font-family);}
+.header {
+  padding: 0px 0px 0px 5px;
+  margin: 0px 0px 0px 0px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 125%;
+}
+.subheader {
+  padding: 0px 0px 4px 5px;
+  text-align: left;
+  margin: -4px 0px 0px 0px;
+  font-size: 110%;
+}
+.caps {font-variant:small-caps;}
+.body {
+  padding: 2px 0px 0px 5px;
+  margin: 0px 0px -2px 0px;
+  text-align: left;
+  font-size: 80%;
+}
+sub {
+ font-weight: normal;
+ line-height: 12px;
+ margin: 0px;
+ font-size: 80%;
+}
+.center {text-align: center; margin: auto;}
+p {display: block; margin: 0;}
+ul {margin: 0px 0px 0px -18px;}
+
+.bigger {font-size: 115%;}
+.smaller {font-size: 65%; max-height: var(--line-height);}
+
+/* Cloze Style */
+.cloze {color: var(--main-color);font-weight: bold;}
+.cloze b {color: #333333;font-variant: small-caps;font-size: 120%;}
+.cloze i {font-weight: normal;}
+.mobile .night_mode .cloze {color: var(--main-color);}
+
+
+/* Flag Display */
+.card::before {
+    background-image: var(--flag);
+    background-size: var(--flagwidth) var(--flagheight);
+    display: block;
+    margin: 20px auto 10px auto;
+    width: var(--flagwidth);
+    height: var(--flagheight);
+    content:"";
+    border-radius: 3px;
+}
+/*.card::before {filter: brightness(var(--nmbrightness));}*/
+
+.flaginline {
+  display: block;
+  margin: -15px 5px 0px 0px;
+  position: absolute;
+  right: 10px;
+  border-radius: 3px;
+  background-size: 42px 25px;
+  width: 42px; height: 25px;
+  z-index: 1;
+  background-image: var(--flag);
+}
+
+
+/* Card Design */
+.front {
+ max-width: var(--cardwidth); 
+ margin: auto;
+ max-height: 20px;
+ padding: 20px 20px 0px 20px;
+ border-radius: 10px 10px 0px 0px;
+ background-color: var(--main-color);
+ border: var(--borderstroke) solid var(--main-color);
+ box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);
+ position: relative;
+}
+
+:root { --topbottom: 12px}
+.back {
+ font-size: var(--font-size);
+ margin: 0 auto;
+ position: relative;
+ color: #444;
+ line-height: var(--line-height);
+ border: var(--borderstroke) solid lightgrey;
+ background: -webkit-linear-gradient(bottom, lightgrey 0%, var(--background) 8%) 0 var(--topbottom);
+ background-size: 100% var(--line-height);
+ border-radius: 0px 0px 10px 10px;
+ box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);
+ max-width: var(--cardwidth);
+ height: auto;
+ /*min-height: calc(var(--line-height) * 4);*/
+}
+.bkcentered {
+ padding: var(--topbottom) 20px var(--topbottom) 20px;
+ text-align: center;
+}
+.bkleft {
+ padding: var(--topbottom) 5px var(--topbottom) 35px;
+ position: relative;
+}
+.bkleft::before {
+ content: '';
+ position: absolute;
+ width: 4px;
+ top: 0;
+ left: 25px;
+ bottom: 0;
+ border: 1px solid;
+ border-color: transparent lightgrey;
+}
+
+.singleframed {
+ border-left: 2px solid var(--main-color);
+ padding: 3px 0 3px 8px;
+ margin: -3px 10px -3px 10px;
+ min-height: var(--line-height);
+}
+.doubleframed {
+ border-left: 2px solid var(--main-color);
+ border-right: 2px solid var(--main-color);
+ padding: 3px 25px 3px 25px;
+ margin: -3px 5px -3px 5px;
+ min-height: var(--line-height);
+}
+.mobile .doubleframed {
+ padding: 3px 20px 3px 20px;
+}
+
+hr {
+ height: 1.5px;
+ /*color: #ffffff;*/
+ border: 0;
+ background: black;
+ margin-bottom: var(--line-height);
+ margin-top: calc(var(--line-height) - 1.5px);
+}
+hr.half {
+ margin-bottom: calc(var(--line-height) / 2);
+ margin-top: calc(calc(var(--line-height) / 2) - 1.5px);
+}
+
+.topbar {
+ background-color: lightgray;
+ position: fixed;
+ top: 0px;
+ left: 0px;
+ right: 0px;
+ height: 6px;
+
+}
+.mobile .topbar{height: 3px;}
+div.topbar {background-color:  var(--main-color);}
+
+
+/*---image formatting---*/
+
+img {max-width: 100%;}
+
+.image5 img {
+ height: calc(var(--line-height)*5 - 2px);
+ padding: 0 0 calc(var(--line-height) + 2px) 0;
+ display: block; margin: auto;
+}
+.image8 img {
+ height: calc(var(--line-height)*8 - 2px);
+ padding: 0 0 calc(var(--line-height) + 2px) 0;
+ display: block; margin: auto;
+}
+.image10 img {
+ height: calc(var(--line-height)*10 - 2px);
+ padding: 0 0 calc(var(--line-height) + 2px) 0;
+ display: block; margin: auto;
+}
+
+/*---replay-button-desktop---*/
+.replay-button svg {
+  margin-top: -16.5px;
+  margin-left: -11px;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+}
+.replay-button svg circle { stroke: var(--main-color); fill: var(--main-color); }
+.replay-button svg path { stroke: white; fill: white; }
+
+
+.mobile .replaybutton span svg {
+  fill: var(--main-color);
+  /*background-color: var(--main-color);*/
+  padding: 0px 1px 0px 0px;
+  margin: -19px 0px 0px -16px;
+  border: 0px solid green;
+  border-radius: 100px;
+  position: absolute;
+  font-size: 32px;
+}
+.mobile .night_mode .replaybutton span svg {fill: var(--main-color);}
+
+
+/* Extra toggle variations */
+
+.extra_toggle {
+ font-size: calc(var(--font-size) * 0.70);
+ color: #565152;
+ background-color: rgba(85,85,85,0.10);
+ border-radius: 10px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0 0px 0;
+}
+.left_75 {
+  width: 75%; 
+  text-align: left;
+  padding: 0px 0px 0px 30px;
+}
+.left_100 {
+  text-align: left;
+  width: 92%;
+  padding: 0px 0px 0px 20px;
+}
+.center_35 {
+  width: 35%;
+  text-align: left;
+  text-align: center;
+  margin: 0px auto 0px auto;
+}
+
+.extra_toggle:hover {background-color: rgba(85,85,85,0.12);}
+
+.extra {
+ display: none;
+ padding: 0px;
+ margin: 0px 0px 0px 0px;
+}
+
+table, th, td {
+ border: 1px solid black;
+  line-height: calc(var(--line-height) * 0.8);
+  text-align: center;
+  min-width: 60px;
+}
+.mobile table, .mobile th, .mobile td {
+  min-width: 36px;}
+table {border-radius: 5px;}
+
+
+/*---Colors and IPA marking---*/
+blue{color:#7AC6DC;}
+blue{color:royalblue;}
+red{color:#e91212;}
+purple{color:#c655f2;}
+/*.night_mode blue{color:#80aaff;}
+.night_mode red{color:#ff8080;}*/
+/* Part of Speech */ gr{color: gray;font-size: 60%; max-height: var(--line-height); margin-bottom: -20px;display:none;}
+
+
+/* stuff of the detailed IPA */
+cm{font-size: 1.0em; font-family:sans-serif}
+cm b{ color: #2c298c;}
+.night_mode cm b{ color: lightblue;}
+
+/* color of the primary-stress and secondary-stress marker */
+cm clblue{color:CornflowerBlue; font-size: 1.0em; font-weight:900;}
+
+/*
+color of the long/semilong marker
+IPA has some really bad choices for marking -- the long/semilong marker is barely visible... so I make it red, and a bit big bigger, in order for it to be visible. I also change the font-family  to serif, so the visibility is better.
+In Windows it looks like a charm, but does it look good on Android and MacOS? Well I hope so.
+*/
+cl{ color:red; font-size: 1.0em; font-weight:900; font-family:serif;}
+.night_mode cl{ color:#ff8080; font-size: 1.0em; font-weight:900;}
+comma{color:#61ba79;font-size: 1.0em;}
+
+/* color of the dot in the detailed IPA */d { color:gray; }
