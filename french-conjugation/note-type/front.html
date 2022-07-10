@@ -1,1 +1,132 @@
-placeholder
+<!--==============================================================================
+ * French Conjugation in Anki using randomized cloze cards
+ * by Julian Hirsch | @DonCiervo
+ * 
+ * Inspired by Andy's Ultimate Conjugation | http://www.asiteaboutnothing.net
+ * Randomized Display adapted from Hikaru | @hikaru-y
+ * Persistent variables using anki-persistence | @SimonLammer
+==============================================================================-->
+
+<script src="_minified.js"></script>
+
+<div class="topbar"></div>
+
+<fieldset class="front"><legend></legend>
+<!--<div class="flaginline {{Tags}}"></div>-->
+</fieldset>
+
+<div class="back bkleft">
+
+{{#Prompt}}<div class="header caps" style="font-size: 110%">{{Prompt}}</div><br>{{/Prompt}}
+
+<div class="singleframed">
+
+<div id="fields-output"></div>
+
+<div class="field" hidden>{{cloze:Sentence-1}}</div>
+<div class="field" hidden>{{cloze:Sentence-2}}</div>
+<div class="field" hidden>{{cloze:Sentence-3}}</div>
+<div class="field" hidden>{{cloze:Sentence-4}}</div>
+<div class="field" hidden>{{cloze:Sentence-5}}</div>
+<div class="field" hidden>{{cloze:Sentence-6}}</div>
+<div class="field" hidden>{{cloze:Sentence-7}}</div>
+<div class="field" hidden>{{cloze:Sentence-8}}</div>
+<div class="field" hidden>{{cloze:Sentence-9}}</div>
+<div class="field" hidden>{{cloze:Sentence-10}}</div>
+<div class="field" hidden>{{cloze:Sentence-11}}</div>
+<div class="field" hidden>{{cloze:Sentence-12}}</div>
+<div class="field" hidden>{{cloze:Sentence-13}}</div>
+<div class="field" hidden>{{cloze:Sentence-14}}</div>
+<div class="field" hidden>{{cloze:Sentence-15}}</div>
+<div class="field" hidden>{{cloze:Sentence-16}}</div>
+</div>
+
+{{#Rule}}<br></br>{{/Rule}}
+
+</div>
+
+
+</div>
+
+
+<script>
+/*----------------------------------------- Choose random field FOR SAME CLOZES
+script thanks to hkr
+https://forums.ankiweb.net/t/is-it-even-possible-to-persist-javascript-variables-on-ankidroid/19820/2
+*/
+{
+    const fieldCount = 1;
+    const fieldsContainer = document.getElementById("fields-output");
+    const fields = [...document.querySelectorAll(".field")];
+    // Durstenfeld shuffle algorithm
+    // https://stackoverflow.com/a/12646864
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    const availableFieldIndexes = fields.reduce((prev, current, index) => {
+        if (current.textContent.trim()) {
+            prev.push(index);
+        }
+        return prev;
+    }, []);
+    shuffleArray(availableFieldIndexes);
+    const randomIndexes = availableFieldIndexes.slice(0, fieldCount);
+
+		// old persistence (interferes with other script)
+    sessionStorage.setItem("randomIndexes", JSON.stringify(randomIndexes));
+
+		// new persistence (not working)
+		// Persistence.setItem("randomIndexes", JSON.stringify(randomIndexes));
+    for (const index of randomIndexes) {
+        fieldsContainer.appendChild(fields[index]);
+        fields[index].hidden = false;
+    }
+}
+</script>
+
+
+<!-- ----------------------------------------- Randomize pronouns and adjectives -- -->
+<div id="front"></div>
+<script>
+var pronouns = document.getElementsByClassName("pronouns");
+var pron_arr = pronouns[0].innerHTML.split("/");
+var pron = pronouns;
+
+var appendum = document.getElementsByClassName("appendum");
+var app_arr = appendum[0].innerHTML.split("/");
+var app = appendum;
+
+Persistence.clear();
+if (Persistence.isAvailable()) {
+	index = Math.floor(Math.random() * pron_arr.length);
+	Persistence.setItem("pronoun_index", index);
+	pron = pron_arr[index];
+	
+	if(typeof app_arr[index] === 'undefined') {
+		app = app_arr[0];
+	}
+	else {
+		app = app_arr[index];
+	}
+}
+
+
+// Test to persist the strings directly
+pronouns[0].innerHTML = pron;
+appendum[0].innerHTML = app;
+
+Persistence.setItem("pron", pron);
+Persistence.setItem("app", app);
+</script>
+
+
+
+
+<!-- ----------------------------------------- Replace shortened j' on front ------ -->
+<script>
+var pronouns = document.getElementsByClassName("firstperson");
+pronouns[0].innerHTML = "je ";
+</script>
