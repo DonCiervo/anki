@@ -1,0 +1,145 @@
+<!--==============================================================================
+ * Spanish Conjugation in Anki using randomized cloze cards
+ * by Julian Hirsch | @DonCiervo
+ * 
+ * 1.0.0
+ * 
+ * Forked Andy's Ultimate Conjugation | http://www.asiteaboutnothing.net |@boolbag
+ * Persistent variables using anki-persistence | @SimonLammer
+==============================================================================-->
+
+<script src="_minified.js"></script>
+
+
+<div class="topbar"></div>
+
+<fieldset class="front"><legend></legend>
+<!--<div class="flaginline {{Tags}}"></div>-->
+</fieldset>
+
+<div class="back bkleft">
+
+
+<div class="singleframed">
+<p>{{cloze:Prompt}}</p>
+</div>
+
+
+{{#Similar}}
+
+<br>
+
+
+<div class="extra_toggle left_100" id="extra_toggle_on_button" onclick="showextra()">
+<div style="font-weight:bold; text-decoration: none; color: darkgrey">Similar</div>
+</div>
+
+<div class="extra_toggle left_100" id="extrafield" onclick="hideextra()" style="display:none">
+
+<!--&#x26A0-->
+<div style="font-weight:bold; text-decoration: underline;">Similar</div>
+{{Similar}}
+{{/Similar}}
+
+</div>
+</div>
+
+
+<div id="back"></div>
+<script>
+if (Persistence.isAvailable()) {
+	replacement = Persistence.getItem();
+}
+var pronouns = document.getElementsByClassName("cloze_pronoun");
+pronouns[0].innerHTML = replacement;
+Persistence.clear();
+</script>
+
+
+
+<script>
+	var collection = document.getElementsByClassName("testclass");
+	for (let i = 0; i < collection.length; i++) {
+  collection[i].style.backgroundColor = "red";
+</script>
+
+<script>
+ function showextra() {
+  document.getElementById("extrafield").style.display = "block";
+  document.getElementById("extra_toggle_on_button").style.display = "none";
+}
+ function hideextra() {
+  document.getElementById("extrafield").style.display = "none";
+  document.getElementById("extra_toggle_on_button").style.display = "block";
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Old HTML
+
+<div class="back">
+<br /><br />
+&mdash;<br />
+
+same family: {{Similar}}
+<br />
+&mdash;<br />
+
+notes: {{Notes}}
+<br />
+&mdash;<br />
+
+</span>
+<span class="manual">the <a href="http://www.asiteaboutnothing.net/w_ultimate_spanish_conjugation.html">manual</a> | lists of <a href="http://www.asiteaboutnothing.net/w_ultimate_spanish_conjugation.html#deck-description">verbs and tags</a><br>
+&mdash;<br />
+
+
+{{#Tags}}
+<span class='tag_SECTION'>
+tags: <span class='tags'>{{Tags}}</span>
+</span>
+{{/Tags}}
+</div>
+
+
+<br><br>
