@@ -1,0 +1,277 @@
+/*==============================================================================
+ * Spanish Conjugation in Anki using randomized cloze cards
+ * by Julian Hirsch | @DonCiervo
+ * 
+ * 1.0.0
+ * 
+ * Forked Andy's Ultimate Conjugation | http://www.asiteaboutnothing.net |@boolbag
+ * Persistent variables using anki-persistence | @SimonLammer
+==============================================================================*/
+
+/* Quick configuration: 
+    Customize the color scheme and set the flag (and its dimensions) you want from your media folder */
+
+:root {
+  --main-color: #71000F;
+  --accent-color: white;
+  --nmbrightness: 80%;
+  --flag: url(_ColombiaFlag.png);
+  --flagwidth: 60px;
+  --flagheight: 40px;
+  --cardwidth: 450px;
+  --font-size: 20px;
+  --line-height: 28px;
+  --background: #ffecb3;
+}
+
+.cloze {color: var(--main-color);font-weight: bold;}
+.cloze b {color: #333333;font-variant: small-caps;font-size: 120%;}
+.cloze i {font-weight: normal;}
+.mobile .night_mode .cloze {color: var(--main-color);}
+
+/*-------------------------------------------------------------------*/
+
+:root {--borderstroke: 0px;}
+
+
+/* Paragraphs and Styles */
+.header {
+  padding: 0px 0px 0px 5px;
+  margin: 0px 0px 0px 0px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 125%;
+}
+.subheader {
+  padding: 0px 0px 4px 5px;
+  text-align: left;
+  margin: -4px 0px 0px 0px;
+  font-size: 110%;
+}
+.caps {font-variant:small-caps;}
+.body {
+  padding: 2px 0px 0px 5px;
+  margin: 0px 0px -2px 0px;
+  text-align: left;
+  font-size: 80%;
+}
+sub {
+ font-weight: normal;
+ line-height: 12px;
+ margin: 0px;
+ font-size: 80%;
+}
+.center {text-align: center; margin: auto;}
+p {display: block; margin: 0;}
+ul {margin: 0px 0px 0px -18px;}
+
+/* Flag Display */
+.card::before {
+    background-image: var(--flag);
+    background-size: var(--flagwidth) var(--flagheight);
+    display: block;
+    margin: 20px auto 10px auto;
+    width: var(--flagwidth);
+    height: var(--flagheight);
+    content:"";
+    border-radius: 3px;
+}
+
+
+/* Card Design */
+.front {
+ max-width: var(--cardwidth); 
+ margin: auto;
+ padding: 20px 20px 0px 20px;
+ border-radius: 10px 10px 0px 0px;
+ background-color: var(--main-color);
+ border: var(--borderstroke) solid var(--main-color);
+ box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);
+}
+
+:root { --topbottom: 12px}
+.back {
+ font-size: var(--font-size);
+ margin: 0 auto;
+ position: relative;
+ color: #444;
+ line-height: var(--line-height);
+ border: var(--borderstroke) solid lightgrey;
+ background: -webkit-linear-gradient(bottom, lightgrey 0%, var(--background) 8%) 0 var(--topbottom);
+ background-size: 100% var(--line-height);
+ border-radius: 0px 0px 10px 10px;
+ box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);
+ max-width: var(--cardwidth);
+ height: auto;
+ /*min-height: calc(var(--line-height) * 4);*/
+}
+.bkcentered {
+ padding: var(--topbottom) 20px var(--topbottom) 20px;
+ text-align: center;
+}
+.bkleft {
+ padding: var(--topbottom) 5px var(--topbottom) 35px;
+ position: relative;
+}
+.bkleft::before {
+ content: '';
+ position: absolute;
+ width: 4px;
+ top: 0;
+ left: 25px;
+ bottom: 0;
+ border: 1px solid;
+ border-color: transparent lightgrey;
+}
+
+.singleframed {
+ border-left: 2px solid var(--main-color);
+ padding: 3px 0 3px 8px;
+ margin: -3px 10px -3px 10px;
+ min-height: var(--line-height);
+}
+.doubleframed {
+ border-left: 2px solid var(--main-color);
+ border-right: 2px solid var(--main-color);
+ padding: 3px 25px 3px 25px;
+ margin: -3px 5px -3px 5px;
+ min-height: var(--line-height);
+}
+.mobile .doubleframed {
+ padding: 3px 20px 3px 20px;
+}
+
+hr {
+ height: 1.5px;
+ /*color: #ffffff;*/
+ border: 0;
+ background: black;
+ margin-bottom: var(--line-height);
+ margin-top: calc(var(--line-height) - 1.5px);
+}
+hr.half {
+ margin-bottom: calc(var(--line-height) / 2);
+ margin-top: calc(calc(var(--line-height) / 2) - 1.5px);
+}
+
+.topbar {
+ background-color: lightgray;
+ position: fixed;
+ top: 0px;
+ left: 0px;
+ right: 0px;
+ height: 6px;
+
+}
+.mobile .topbar{height: 3px;}
+div.topbar {background-color:  var(--main-color);}
+
+
+/*---image formatting---*/
+
+img {max-width: 100%;}
+
+.image5 img {
+ height: calc(var(--line-height)*5 - 2px);
+ padding: 0 0 calc(var(--line-height) + 2px) 0;
+ display: block; margin: auto;
+}
+.image8 img {
+ height: calc(var(--line-height)*8 - 2px);
+ padding: 0 0 calc(var(--line-height) + 2px) 0;
+ display: block; margin: auto;
+}
+.image10 img {
+ height: calc(var(--line-height)*10 - 2px);
+ padding: 0 0 calc(var(--line-height) + 2px) 0;
+ display: block; margin: auto;
+}
+
+/*---replay-button-desktop---*/
+.replay-button svg {
+  margin-top: -12.5px;
+  margin-left: 5px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.replay-button svg circle { stroke: var(--main-color); fill: var(--main-color); }
+.replay-button svg path { stroke: white; fill: white; }
+
+/*---replaybutton-ankidroid---*/
+
+.replaybutton span svg {
+  fill: white;
+  //border: 2px solid white;
+  margin-top: -14.5px;
+  margin-left: 5px;
+  position: absolute;
+  font-size: 25px;
+}
+.mobile .replaybutton span svg {
+  fill: var(--main-color);
+  margin-top: -19px;
+  padding-right: 20px;
+  margin-left: -10px;
+}
+.mobile .night_mode .replaybutton span svg {fill: var(--main-color);}
+
+
+/* Extra toggle variations */
+
+.extra_toggle {
+ font-size: 15px;
+ color: #565152;
+ background-color: rgba(85,85,85,0.10);
+ border-radius: 10px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0 0px 0;
+}
+.left_75 {
+  width: 75%; 
+  text-align: left;
+  padding: 0px 0px 0px 30px;
+}
+.left_100 {
+  text-align: left;
+  width: 92%;
+  padding: 0px 0px 0px 20px;
+}
+.center_35 {
+  width: 35%;
+  text-align: left;
+  text-align: center;
+  margin: 0px auto 0px auto;
+}
+
+.extra_toggle:hover {background-color: rgba(85,85,85,0.12);}
+
+.extra {
+ display: none;
+ padding: 0px;
+ margin: 0px 0px 0px 0px;
+}
+
+/* -------------------------------------------------- HYPERLINKS */
+a, a:visited {
+  text-decoration: none;
+  color: blue;
+  border-radius: 0.25em;
+  padding: 0 0.1em;
+  transition: all 0.1s;
+  text-decoration: underline;
+}
+a:hover, a:active {
+  text-decoration: underline;
+  color: var(--link-fg-active);
+  background-color: var(--link-bg-active);
+}
+
+.alt_conj {
+	padding-right: 10px;
+}
+
+.alt_inf {
+	color: blue;
+	padding-left: 10px;
+}
