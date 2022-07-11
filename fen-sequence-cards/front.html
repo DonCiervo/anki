@@ -3,42 +3,101 @@
  * by Julian Hirsch | @DonCiervo
  * 
  * Inspired by Nándor's sequential cards template | @MNandor
+ * Special thanks to Matthias Metelka and his creative JS genius | @kleinerpirat
  * 
  * Using the Javascript renderer engine of the HTMLTTChess package
  * Copyright (C) 2007  Michael Peeters - full info below
 ==============================================================================-->
 
 <div id="paper" class="paper">
-
-<figure>
-<c:chess id="target" class="cdig" onclick="showNext();"></c:chess>
-</figure>
+<figure><c:chess id="target" class="cdig" onclick="showNext();"></c:chess></figure>
 
 <div class="text prompt">{{Prompt}}</div>
-
-
-
-
-
-
 </div>
 
 <div id="source" hidden>{{FEN Sequence}}</div>
 
 
-
 <script>
-document.body.onkeyup = function(e) {
-  if (e.key == " " || e.code == "Space" || e.keyCode == 32 || e.key == "ArrowRight")
-    showNext(); 
+/* Inspired by and adapted from @MNandor */
+
+paper = document.getElementById("paper")
+source = document.getElementById("source");
+target = document.getElementById("target");
+
+var source_arr = source.textContent.split(",");
+
+next = 0;
+function showNext(){ 
+    target.textContent = source_arr[next];
+    next += 1;
+    next = next % source_arr.length;
+    
+    if (next == 0) 
+				paper.style="border-color: gold";
+    else
+				paper.style="border-color: blue";
+
+    parseChess();
 }
+
+//showNext();  //this function call was moved to after the chess parser
 </script>
 
 
 
-<script>
-paperDiv = document.getElementById("paper")
 
+<script>
+  (() => {
+    /**
+     * Anki script: delay answer on spacebar
+     * @author Matthias Metelka | @kleinerpirat
+     */
+
+    const dummy = document.createElement("div");
+    dummy.id = "dummyInput";
+    dummy.contentEditable = true;
+    document.getElementById("qa").appendChild(dummy);
+    dummy.focus();
+
+    /* Stuff I added - I'll change it to use the same counter as ShowNext() later
+				but I want to find the error here first
+				Side note: I'll make this more implicit later - but for illustration
+		*/
+		source = document.getElementById("source");
+		var source_arr = source.textContent.split(",");
+		var no_of_steps = source_arr.length;
+
+    /* count for demo condition */		
+		let count = 0;
+
+    if (!globalThis.spaceListening) {
+      document.addEventListener("click", () => dummy.focus());
+      document.addEventListener("keydown", (e) => {
+        dummy.blur();
+        if (e.code == "Space") {
+          if (count++ < no_of_steps - 1) {
+            dummy.focus();
+            showNext();
+          }
+        } else {
+          setTimeout(() => dummy.focus());
+        }
+      });
+      globalThis.spaceListening = true;
+    }
+  })();
+</script>
+
+
+
+
+
+
+<script>
+/* Inspired by and adapted from @MNandor */
+
+paper = document.getElementById("paper")
 source = document.getElementById("source");
 target = document.getElementById("target");
 
@@ -52,9 +111,9 @@ function showNext(){
     next = next % source_arr.length;
     
     if (next == 0) 
-				paperDiv.style="border-color: gold";
+				paper.style="border-color: gold";
     else
-				paperDiv.style="border-color: blue";
+				paper.style="border-color: blue";
 
     parseChess();
 }

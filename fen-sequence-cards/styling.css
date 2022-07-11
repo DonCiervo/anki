@@ -1,3 +1,19 @@
+/*==============================================================================
+ * Dynamic FEN Display in Anki
+ * by Julian Hirsch | @DonCiervo
+ * 
+ * Inspired by Nándor's sequential cards template | @MNandor
+ * Special thanks to Matthias Metelka and his creative JS genius | @kleinerpirat
+ * 
+ * Using the Javascript renderer engine of the HTMLTTChess package
+ * Copyright (C) 2007  Michael Peeters - full info below
+==============================================================================*/
+
+#dummyInput {
+  caret-color: transparent;
+  /*caret-color: black;*/
+}
+
 .paper {
   padding: 25px 5px;
   background: #121212;
