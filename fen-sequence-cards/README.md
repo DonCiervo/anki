@@ -6,6 +6,7 @@ Particularly useful to study openings and main defenses.
 
 Using FEN instead of images guarantees performance and small file sizes.
 
+###Demonstration
 
 From this:
 
