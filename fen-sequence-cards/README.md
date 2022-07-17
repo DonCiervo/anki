@@ -24,3 +24,14 @@ r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R
 To this:
 
 ![fen-sequence-rendered](images/FEN-sequence.gif?raw=true "Rendered FEN Sequence in Anki")
+
+
+***
+
+### Attribution
+
+Originally inspired by @MNandor's sequence template.
+
+Using the HTMLTTCHESS renderer engine by @xeyownt.
+
+Thank you very much to them for their work!
