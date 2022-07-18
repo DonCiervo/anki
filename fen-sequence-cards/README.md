@@ -8,6 +8,16 @@ Using FEN instead of images guarantees performance and small file sizes.
 
 ***
 
+### Usage
+ - On Anki desktop: 
+   - Using the arrow keys to go back and forward
+   - Using the mouse to click through the positions
+   
+ - On AnkiMobile and AnkiDroid:
+   - Tapping the rendered chess board to cycle through the positions
+
+&nsbp;
+
 ### Demonstration
 
 From this:
