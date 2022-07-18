@@ -4,15 +4,17 @@ This is where I publish templates, decks and other development surrounding the o
 
 ## Current projects
 
-Working Projects
+**Working Projects**
 - Sequential FEN Visualizer
 - Ultimate Spanish Conjugation Reskin
 
-In work:
+**In work:**
 - French Ultimate Conjugation
 - Language Learning Template Suite
 
-Planned:
+**Planned:**
 - Ultimate Spanish Conjugation
+
+&nbsp;
 
 Stay tuned!
