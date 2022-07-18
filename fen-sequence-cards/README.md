@@ -16,7 +16,7 @@ Using FEN instead of images guarantees performance and small file sizes.
  - On AnkiMobile and AnkiDroid:
    - Tapping the rendered chess board to cycle through the positions
 
-&nsbp;
+***
 
 ### Demonstration
 
