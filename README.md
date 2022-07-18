@@ -13,7 +13,7 @@ This is where I publish templates, decks and other development surrounding the o
 - Language Learning Template Suite
 
 **Planned:**
-- Ultimate Spanish Conjugation
+- Ultimate Spanish Conjugation Rework
 
 &nbsp;
 
