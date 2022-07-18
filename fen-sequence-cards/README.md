@@ -1,6 +1,6 @@
 # FEN in sequence
 
-Takes [Forsyth–Edwards Notation](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) (FEN) and turns it into a sequence of clickable chess positions.
+Anki Template that takes [Forsyth–Edwards Notation](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) (FEN) and turns it into a sequence of clickable chess positions.
 
 Particularly useful to study openings and main defenses.
 
