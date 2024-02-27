@@ -1,0 +1,622 @@
+/*---------------------------------------------- SYNTAX HIGHLIGHTING ADD-ON ---------------*/
+/*@import url("_styles_for_syntax_highlighting.css");
+*/
+
+.highlight {
+  text-align:left;
+  font-family: droid sans mono;
+  background-color: #f2f2f2;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/*.night_mode .highlight {
+  /* Invert all of the colors when using night mode in AnkiDroid */
+  color:black;
+  background-color: #C2C2C2;
+  filter: invert(1); -webkit-filter:invert(1);
+}*/
+
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; color: green; font-style: italic; font-weight: bold;} /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #808080 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+
+.highlight b, .highlight b span {
+ color: blue !important;
+}
+
+
+
+/*=========================================================================================*/
+/*=========================================================================================*/
+/*---------------------------------------------- CARD STYLES ------------------------------*/
+.card {
+ font-family: "Arial";
+ font-size: 18px;
+}
+.mobile .card {
+ font-size: 14px;
+}
+
+
+/*---------------------------------------------- CARD CATEGORY VARIABLES ------------------*/
+.container[class*="SWE"] {
+  --title-color: darkblue;
+  --title-text-color: white;
+  --tag-content: "SWE";
+}
+.container[class*="Business"] {
+  --title-color: #800080;
+  --title-text-color: white;
+  --tag-content: "Business";
+}
+.container[class*="::Economics"] {
+  --title-color: darkgreen;
+  --title-text-color: white;
+  --tag-content: "Economics";
+}
+.container[class*="::Data Science"] {
+  --title-color: #92002B;
+  --title-text-color: white;
+  --tag-content: "Data Science";
+}
+.container[class*="::Tools"] {
+  --title-color: darkgrey;
+  --title-text-color: black;
+  --tag-content: "Tools";
+}
+
+
+/*---------------------------------------------- CARD SHAPE -------------------------------*/
+:root {
+  --cardwidth: 720px;
+  --cardheight: 450px;
+}
+.mobile {
+  --cardheight: 300px;
+}
+
+.container[class*="Business"] {
+  --box-radii: 10px 10px 10px 10px;
+  --title-radii: 10px 10px 0px 0px;
+}
+.container[class*="Computer"] {
+  --box-radii: 30px 5px 30px 5px;
+  --title-radii: 30px 5px 0px 0px;
+}
+
+
+/*---------------------------------------------- CUES -------------------------------------*/
+:root {
+  --python: #29577e;
+  --c: #555555;
+  --js: #F0ED3D;
+  --ts: blue;
+  --r: #F76A99;
+  --sql: #f2732f;
+  --html: blue;
+  --css: green;
+  --jayvee: yellow;
+  --markdown: black;
+  --tools: #605F5E;
+  --color: white;
+}
+
+/*---------------------------------------------- PROGRAMMING LANGUAGE CUES ----------------*/
+.container[class*="coding::"] {
+  --vis: visible;
+}
+.container[class*="jayvee"] {
+  --color: black;
+  --background: var(--jayvee);
+  --text: "Jayvee";
+}
+.container[class*="python"] {
+  --background: var(--python);
+  --text: "Python";
+}
+.container[class*="coding::c"] {
+  --background: var(--c);
+  --text: "C";
+}
+.container[class*="js"] {
+  --color: black;
+  --background: var(--js);
+  --text: "JavaScript";
+}
+.container[class*="ts"] {
+  --background: var(--ts);
+  --text: "TypeScript";
+}
+.container[class*="coding::r"] {
+  --background: var(--r);
+  --text: "R";
+}
+.container[class*="sql"] {
+  --background: var(--sql);
+  --text: "SQL";
+}
+.container[class*="coding::css"] {
+  --background: var(--css);
+  --text: "CSS";
+}
+
+/*---------------------------------------------- TOOL CUES --------------------------------*/
+.container[class*="tools::"] {
+  --background: var(--tools);
+  --vis: visible;
+}
+.container[class*="tools::unix"] {--text: "\1F427  Unix";}
+.container[class*="tools::git"] {--text: "\1F527  Git";}
+.container[class*="tools::anki"] {--text: "\2605  Anki";}
+.container[class*="tools::excel"] {--text: "\1F4CA  Excel";}
+.container[class*="tools::latex"] {--text: "\2328  LaTeX / Overleaf";}
+.container[class*="tools::google"] {--text: "\1F50E  Google Search";}
+.container[class*="tools::firefox"] {--text: "\1F98A  Firefox";}
+.container[class*="tools::firefox"] {--text: "\1F98A  Firefox";}
+.container[class*="tools::pycharm"] {--text: "PyCharm";}
+.container[class*="tools::windows"] {--text: "\229e  Windows";}
+
+
+
+/*---------------------------------------------- LEETCODE INSTRUCTIONS --------------------*/
+:root {
+  --opacity-white-10: #ffffff0f;
+  --opacity-white-20: #ffffff14;
+  --opacity-white-30: #ffffff1a;
+  --opacity-white-40: #ffffff24;
+  --opacity-white-50: #ffffff38;
+  --opacity-white-60: #ffffff4d;
+  --opacity-white-70: #fff6;
+  --opacity-white-80: #fff9;
+  --opacity-white-90: #fffc;
+  --opacity-white-100: #fff;
+}
+
+.instruction {
+ text-align: left;
+ padding: 5px 0 0 15px;
+ font-size: 80%;
+}
+
+.instruction code {
+  background-color: #000a2008;
+  border-color: #0000000d;
+  border-radius: 5px;
+  border-width: 1px;
+  color: #262626bf;
+  font-family: Menlo,sans-serif;
+  line-height: 1rem;
+  padding: .125rem;
+  white-space: pre-wrap;
+}
+.nightMode .instruction code {
+  background-color: #ffffff12;
+  border-color: #f7faff1f;
+  color: #eff1f6bf;
+}
+
+.instruction pre {
+  border-color: #ffffff24;
+  border-left-width: 2px;
+  color: var(--text-secondary);
+  font-family: Menlo,sans-serif;
+  line-height: 1.25rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  overflow: visible;
+  padding-left: 1rem;
+  white-space: pre-wrap;
+}
+
+
+
+/*---------------------------------------------- FIELDSET LEGEND --------------------------*/
+:root {
+  --cue-size: 60%;
+  --cue-width: 120px;
+}
+.mobile {
+  --cue-size: 50%;
+  --cue-width: 70px;
+}
+
+fieldset.box_title {
+  position: relative;
+  border: 0px;
+}
+
+.box_title legend {
+  position: absolute;
+  bottom: 0;
+  right: 3%;
+  transform: translate(0%, 25%);
+  padding: 1px 5px 1px 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: var(--cue-size);
+  min-width: var(--cue-width);
+  font-weight: normal;
+  visibility: hidden;
+  font-variant: small-caps;
+}
+
+.box_title legend::before, .box_title legend {
+  background-color: var(--background);
+  color: var(--color);
+  content: var(--text);
+  visibility: var(--vis);
+}
+
+
+
+/*---------------------------------------------- TAGS -------------------------------------*/
+:root {
+ --tagheight: 22px;
+ --tagpadding: 0px 20px 0px 23px;
+ --size: 80%;
+}
+.mobile {
+ --tagheight: 15px;
+ --tagpadding: 0 15px 0 18px;
+ --size: 75%;
+ --canvas: black;
+}
+
+.roundtag *, .ctag * {
+  font-size: var(--size);
+  float: right;
+  margin: 20px 0px 10px 5px;
+  height: var(--tagheight);
+  line-height: var(--tagheight);
+  padding: var(--tagpadding);
+  margin: 10px 0px 10px 5px;
+  border: 0;
+}
+
+.roundtag * {
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+.roundtag .subject {
+  background-color: var(--title-color);
+  color: var(--title-text-color);
+  display: block;
+}
+.roundtag .subject::before {
+  content: var(--tag-content);
+}
+
+.ctag * {
+  background: gray;
+  border-radius: 3px 0 0 3px;
+  color: white;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  display: none;
+}
+.ctag *::before {
+    display: block;
+    width: auto;
+    height: auto;
+    float: left;
+    margin: 0 -0px 0 -12px;
+}
+.ctag *::after {
+    background: var(--canvas);
+    border-bottom: calc(var(--tagheight) / 2) solid transparent;
+    border-left: 10px solid gray;
+    border-top: calc(var(--tagheight) / 2) solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.ctag .html {background: var(--html)} .ctag .html::after {border-left-color: var(--html);} .ctag .html::before {content: "⚬ \00a0 #HTML";}
+.ctag .css {background: var(--css)} .ctag .css::after {border-left-color: var(--css);} .ctag .css::before {content: "⚬ \00a0 #CSS";}
+.ctag .ts {background: var(--ts)} .ctag .ts::after {border-left-color: var(--ts);} .ctag .ts::before {content: "⚬ \00a0 #TypeScript";}
+.ctag .py {background: var(--python)} .ctag .py::after {border-left-color: var(--python);} .ctag .py::before {content: "⚬ \00a0 #Python";}
+.ctag .js {background: var(--js);color: black} .ctag .js::after {border-left-color: var(--js);} .ctag .js::before {content: "⚬ \00a0 #JavaScript";}
+.ctag .c {background: var(--c)} .ctag .c::after {border-left-color: var(--c);} .ctag .c::before {content: "⚬ \00a0 #C";}
+.ctag .r {background: var(--r)} .ctag .r::after {border-left-color: var(--r);} .ctag .r::before {content: "⚬ \00a0 #R";}
+.ctag .sql {background: var(--sql)} .ctag .sql::after {border-left-color: var(--sql);} .ctag .sql::before {content: "⚬ \00a0 #SQL";}
+
+.container[class*="coding::html"] .html,
+.container[class*="coding::css"] .css,
+.container[class*="coding::ts"] .ts,
+.container[class*="coding::js"] .js,
+.container[class*="coding::python"] .py,
+.container[class*="coding::c "] .c,
+.container[class*="coding::r"] .r,
+.container[class*="coding::sql"] .sql {
+  display:block;
+}
+
+
+
+/*---------------------------------------------- STYLES -----------------------------------*/
+/*---------------------------------------------- BOX --------------------------------------*/
+.box {
+  max-width: var(--cardwidth);
+  min-height: var(--cardheight);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+  margin: auto;
+  background-color: white;
+  border-radius: 10px 10px 0px 0px;
+  border-radius: var(--box-radii);
+}
+
+.container {
+    max-width: calc(var(--cardwidth) + 0px);
+    min-height: calc(var(--cardheight) + 0px);
+    margin: auto;
+    text-align: right;
+}
+
+.nightMode .box {
+	background-color: #212121;
+}
+
+
+/*---------------------------------------------- CARD TITLE -------------------------------*/
+.box_title {
+  padding: 20px;
+  text-align: center;
+  font-size: 140%;
+  font-weight: bold;
+  margin: 0;
+  min-height: 30px;
+  background-color: black;
+  color: white;
+}
+.mobile .box_title { font-size: 165%;}
+
+.box_title {
+  background-color: var(--title-color);
+  color: var(--title-text-color);
+  border-radius: var(--title-radii);
+}
+
+
+/*---------------------------------------------- STYLES -----------------------------------*/
+/*---------------------------------------------- TEXT -------------------------------------*/
+.box_text {
+    overflow: ;
+    padding: 10px 20px 15px 20px;
+    width: auto;
+    text-align: left;
+    line-height: 135%;
+    margin: 0;
+}
+
+
+
+/*---------------------------------------------- STYLES -----------------------------------*/
+/*---------------------------------------------- HIGHLIGHTING -----------------------------*/
+i, en {
+ color: blue;
+}
+.nightMode i, .nightMode em {
+  color: #57c7ff;
+}
+
+b, strong {
+ color: green;
+}
+.nightMode b, .nightMode strong {
+  color: #5af78e;
+}
+
+.nightMode .box_text font {
+	color: #bb86ff;
+}
+.nightMode .box_text font color="#0000ff {
+	color: green;
+}
+
+
+.linenodiv {
+  padding: 0px 5px 0px 5px !important;
+  padding-left: 2px !important;
+  margin-right: -1px !important;
+  border-radius: 2px 0 0 2px !important;
+  padding-left: 10px;
+}
+
+.highlight {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  max-width: 775px;
+  /*overflow: overlay;*/
+}
+
+.image .highlight {
+  border-radius: 0 2px 2px 0;
+}
+
+
+.box_title i b,
+.box_title b i,
+.box_title em strong,
+.box_title strong em,
+.box_text i b,
+.box_text b i,
+.box_text em strong,
+.box_text strong em {
+  color: #424242 !important;
+  border: 1px solid #424242;
+  border-radius: 4px;
+  padding: 0px 6px 1px 6px;
+  background-color: #EDEDED;
+  /*font-family: monospace;*/
+  font-family: Lucida Sans Typewriter Regular;
+  font-style: normal;
+  font-size: 75%;
+  font-weight: normal;
+  top-margin: -1em;
+  white-space: nowrap;
+}
+
+/*---------------------------------------------- STYLES -----------------------------------*/
+/*---------------------------------------------- IMAGES -----------------------------------*/
+.image {
+ text-align: center;
+ margin: 10px 0px 0px 0px;
+}
+
+.image .highlighttable {
+  text-align: left;
+  color: black;
+  padding: 0px;
+  font-size: 85%;
+  margin-top: -10px;
+}
+.mobile .image .highlighttable {
+  font-size: 72%;
+}
+
+.image img {
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 10px 10px 10px;
+  max-width: 90%;
+  max-height: 300px;
+}
+
+.box_title img {
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 0px 0px 0px;
+  max-width: 80%;
+}
+
+
+/*---------------------------------------------- STYLES -----------------------------------*/
+/*---------------------------------------------- OTHER ------------------------------------*/
+
+anki-mathjax {
+ text-align: center;
+}
+
+
+@font-face {font-family: "Lucida Sans Typewriter Regular"; src: url('_Lucida_Sans_Typewriter_Regular.ttf');}
+@font-face {font-family: "Jet Brains"; src: url('_JetBrainsMono-Medium.ttf');}
+
+.inline {
+  display: block;
+  margin: 10px 0px 0px -20px;
+  position: absolute;
+  border-radius: 5px;
+}
+
+.tool {
+  border: 2px solid black;
+  padding: 1px 6px 2px 6px;
+  border-radius: 3px;
+  font-variant: small-caps;
+  font-size: 75%;
+  font-style: ;
+  display: none;
+  font-weight: normal;
+  background-color: #605F5E;
+  margin: 6px 20px -6px 10px;
+  float: right;
+  color: white;
+}
+.tool[class*="::Tools"] {display: block;}
+.tool[class*="::Tools"]::before {content: "\1F527"}
+
+
+ul {margin: 0;}
+ol {margin: 0;}
+.mobile ul {margin:0px 0px 0px -15px}
+
+
+.annotation {
+ margin: 80px 0px -60px 30px;
+ padding: 5px;
+ width: 60%;
+ text-align:left;
+ border: 2px solid grey;
+ border-radius: 5px;
+ background-color: white;
+ color: black;
+}
+.questions::before {
+ content: "Questions:";
+ font-weight: bold;
+ padding: 10px;
+}
+.notes::before {
+ content: "Notes:";
+ font-weight: bold;
+ padding: 10px;
+}

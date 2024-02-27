@@ -1,0 +1,38 @@
+<div class="container {{Tags}} {{Deck}}">
+
+  <div class="box">
+
+    <fieldset class="box_title">
+      <legend></legend>
+      {{Front}}
+    </fieldset>
+
+    {{#Instruction}}
+    <details class="instruction" open>
+      <summary>Instructions</summary>
+      <div class="instruction">{{Instruction}}</div>
+    </details>
+    {{/Instruction}}
+
+    {{#Preview}}<div class="image">{{Preview}}</div>{{/Preview}}
+
+  </div>
+
+  <div class="ctag">
+    <div class="css"></div>
+    <div class="html"></div>
+    <div class="ts"></div>
+    <div class="js"></div>
+    <div class="py"></div>
+    <div class="c"></div>
+    <div class="r"></div>
+    <div class="sql"></div>
+    <div class="jayvee"></div>
+  </div>
+
+  <div class="roundtag">
+    <div class="subdeck">{{Subdeck}}</div>
+    <div class="subject"></div>
+  </div>
+
+</div>
