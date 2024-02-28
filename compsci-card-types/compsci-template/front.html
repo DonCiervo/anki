@@ -8,22 +8,13 @@
     </fieldset>
 
     {{#Instruction}}
-    <details class="instruction" closed>
+    <details class="tab" open>
       <summary>Instructions</summary>
       <div class="instruction">{{Instruction}}</div>
     </details>
     {{/Instruction}}
 
-    {{#Answer}}<div class="box_text">{{Answer}}	</div>{{/Answer}}
-
-      <!-- If no Image, keep showing preview, if there is one -->
-      {{#Postview}}<div style="display: none">{{/Postview}}
-              {{#Preview}}<div class="image">{{Preview}}</div>{{/Preview}}
-      {{#Postview}}</div>{{/Postview}}
-
-      {{#Postview}}<div class="image">{{Postview}}</div>{{/Postview}}
-
-    {{#Description}}<div class="box_text">{{Description}}</div>{{/Description}}
+    {{#Preview}}<div class="image">{{Preview}}</div>{{/Preview}}
 
   </div>
 
@@ -43,8 +34,5 @@
     <div class="subdeck">{{Subdeck}}</div>
     <div class="subject"></div>
   </div>
-
-  {{#Questions}}<div class="annotation questions">{{Questions}}</div>{{/Questions}}
-  {{#Notes}}<div class="annotation notes">{{Notes}}</div>{{/Notes}}
 
 </div>

@@ -9,6 +9,10 @@
   padding-left: 5px;
   padding-right: 5px;
 }
+.highlight, .linenodiv {
+  color: black;
+  font-size: 90%;
+}
 
 /*.night_mode .highlight {
   /* Invert all of the colors when using night mode in AnkiDroid */
@@ -93,6 +97,7 @@
 .card {
  font-family: "Arial";
  font-size: 18px;
+ text-align: left;
 }
 .mobile .card {
  font-size: 14px;
@@ -100,6 +105,10 @@
 
 
 /*---------------------------------------------- CARD CATEGORY VARIABLES ------------------*/
+.container {
+  --title-color: black;
+  --title-text-color: white;
+}
 .container[class*="SWE"] {
   --title-color: darkblue;
   --title-text-color: white;
@@ -161,6 +170,9 @@
   --tools: #605F5E;
   --color: white;
 }
+.container {
+  --vis: hidden;
+}
 
 /*---------------------------------------------- PROGRAMMING LANGUAGE CUES ----------------*/
 .container[class*="coding::"] {
@@ -219,7 +231,57 @@
 
 
 
+/*---------------------------------------------- LEETCODE TABS ----------------------------*/
+:root {
+  --color-bg: rgba(0, 0, 0, .05);
+  --color-code-hightlight: gray;
+  --tab-color: gray;
+  --color-summary-1: #FFF6EE;
+  --color-summary-1-highlight: #FFC48B;
+  --color-summary-2: #FAFAFF;
+  --color-summary-2-highlight: #B4B3FF;
+  --color-summary-3: #FFF0F3;
+  --color-summary-3-highlight: #FFB3C0;
+}
+.nightMode {
+  --color-bg: rgba(0, 0, 0, .35);
+  --color-code-hightlight: #ffffff24;
+}
+.simple-solution {
+  --tab-color: #5AC9EE;
+}
+.complex-solution {
+  --tab-color: lightgreen;
+}
+
+details.tab {
+  display: flex;
+  background: var(--color-bg);
+  font-size: 90%;
+  border-left: 10px solid var(--tab-color);
+  border-radius: 3px;
+  margin: 1% 1%;
+}
+.tab summary {
+  font-weight: bold;
+  background: ;
+  border-radius: 0px 5px 0px 0px;
+  position:relative;
+  display:flex;
+  flex-direction:row;
+  align-content: center;
+  justify-content: flex-start;
+  font-size: 135%;
+  padding: 5px 10px;
+  cursor:pointer;
+}
+
+
+
+
 /*---------------------------------------------- LEETCODE INSTRUCTIONS --------------------*/
+
+
 :root {
   --opacity-white-10: #ffffff0f;
   --opacity-white-20: #ffffff14;
@@ -235,8 +297,8 @@
 
 .instruction {
  text-align: left;
- padding: 5px 0 0 15px;
- font-size: 80%;
+ padding: 5px 10px;
+ line-height: 120%;
 }
 
 .instruction code {
@@ -244,10 +306,11 @@
   border-color: #0000000d;
   border-radius: 5px;
   border-width: 1px;
+  font-size: 90%;
   color: #262626bf;
   font-family: Menlo,sans-serif;
   line-height: 1rem;
-  padding: .125rem;
+  padding: .08rem;
   white-space: pre-wrap;
 }
 .nightMode .instruction code {
@@ -257,16 +320,16 @@
 }
 
 .instruction pre {
-  border-color: #ffffff24;
-  border-left-width: 2px;
+  border-left: 2px solid var(--color-code-hightlight);
   color: var(--text-secondary);
-  font-family: Menlo,sans-serif;
-  line-height: 1.25rem;
+  /*font-family: Menlo,sans-serif;*/
+  line-height: 1.0rem;
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   overflow: visible;
   padding-left: 1rem;
   white-space: pre-wrap;
+  font-size: 90%;
 }
 
 
@@ -411,10 +474,10 @@ fieldset.box_title {
 }
 
 .container {
-    max-width: calc(var(--cardwidth) + 0px);
-    min-height: calc(var(--cardheight) + 0px);
-    margin: auto;
-    text-align: right;
+  max-width: calc(var(--cardwidth) + 0px);
+  min-height: calc(var(--cardheight) + 0px);
+  margin: auto;
+  text-align: left;
 }
 
 .nightMode .box {
@@ -445,12 +508,12 @@ fieldset.box_title {
 /*---------------------------------------------- STYLES -----------------------------------*/
 /*---------------------------------------------- TEXT -------------------------------------*/
 .box_text {
-    overflow: ;
-    padding: 10px 20px 15px 20px;
-    width: auto;
-    text-align: left;
-    line-height: 135%;
-    margin: 0;
+  overflow: ;
+  padding: 1%;
+  width: auto;
+  text-align: left;
+  line-height: 135%;
+  margin: 0;
 }
 
 
@@ -484,7 +547,7 @@ b, strong {
   padding-left: 2px !important;
   margin-right: -1px !important;
   border-radius: 2px 0 0 2px !important;
-  padding-left: 10px;
+  padding-left: 110px;
 }
 
 .highlight {
