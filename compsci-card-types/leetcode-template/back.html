@@ -1,0 +1,40 @@
+<div class="container {{Tags}} {{Deck}}">
+
+  <div class="box">
+    <fieldset class="box_title">
+          <legend></legend>
+          {{Leetcode Problem}}
+      </fieldset>
+
+    {{#Instructions}}
+    <details class="tab" closed>
+      <summary>Instructions</summary>
+      <div class="instruction">{{Instructions}}</div>
+    </details>
+    {{/Instructions}}
+
+    <br><div class="box_text">Solutions:</div>
+
+    {{#Simple Answer Solution}}
+    <details class="tab simple-solution" closed>
+      <summary>{{Simple Answer Name}}</summary>
+      <div class="box_text">{{Simple Answer Solution}}</div>
+    </details>
+    {{/Simple Answer Solution}}
+
+    {{#Complex Answer Solution}}
+    <details class="tab complex-solution" closed>
+      <summary>{{Complex Answer Name}}</summary>
+      <div class="box_text">{{Complex Answer Solution}}</div>
+    </details>
+    {{/Complex Answer Solution}}
+
+    {{#Complex Answer 2 Solution}}
+    <details class="tab complex-solution" closed>
+      <summary>{{Complex Answer 2 Name}}</summary>
+      <div class="box_text">{{Complex Answer 2 Solution}}</div>
+    </details>
+    {{/Complex Answer 2 Solution}}
+
+  </div>
+</div>
