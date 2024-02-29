@@ -6,13 +6,25 @@
   text-align:left;
   font-family: droid sans mono;
   background-color: #f2f2f2;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  border-radius: 0 2px 2px 0 !important;
+  max-width: calc(var(--cardwidth) - 50px);
+  overflow: scrollbar;
 }
-.highlight, .linenodiv {
+.highlighttable {
   color: black;
-  font-size: 90%;
+  font-size: 75%;
 }
+.mobile .highlighttable {
+  font-size: 80%;
+}
+.linenodiv {
+  padding: 0px 3px 0px 3px !important;
+  margin-right: -1px !important;
+  border-radius: 2px 0 0 2px !important;
+}
+
 
 /*.night_mode .highlight {
   /* Invert all of the colors when using night mode in AnkiDroid */
@@ -88,6 +100,8 @@
 .highlight b, .highlight b span {
  color: blue !important;
 }
+
+
 
 
 
@@ -234,7 +248,7 @@
 /*---------------------------------------------- LEETCODE TABS ----------------------------*/
 :root {
   --color-bg: rgba(0, 0, 0, .05);
-  --color-code-hightlight: gray;
+  --color-code-highlight: gray;
   --tab-color: gray;
   --color-summary-1: #FFF6EE;
   --color-summary-1-highlight: #FFC48B;
@@ -245,7 +259,7 @@
 }
 .nightMode {
   --color-bg: rgba(0, 0, 0, .35);
-  --color-code-hightlight: #ffffff24;
+  --color-code-highlight: #ffffff24;
 }
 .simple-solution {
   --tab-color: #5AC9EE;
@@ -274,6 +288,11 @@ details.tab {
   font-size: 135%;
   padding: 5px 10px;
   cursor:pointer;
+}
+.tab img {
+  max-height: calc(var(--cardheight) / 3);
+  border-radius: 3px;
+  margin: 1px;
 }
 
 
@@ -320,7 +339,7 @@ details.tab {
 }
 
 .instruction pre {
-  border-left: 2px solid var(--color-code-hightlight);
+  border-left: 2px solid var(--color-code-highlight);
   color: var(--text-secondary);
   /*font-family: Menlo,sans-serif;*/
   line-height: 1.0rem;
@@ -541,27 +560,6 @@ b, strong {
 	color: green;
 }
 
-
-.linenodiv {
-  padding: 0px 5px 0px 5px !important;
-  padding-left: 2px !important;
-  margin-right: -1px !important;
-  border-radius: 2px 0 0 2px !important;
-  padding-left: 110px;
-}
-
-.highlight {
-  padding-left: 2px !important;
-  padding-right: 2px !important;
-  max-width: 775px;
-  /*overflow: overlay;*/
-}
-
-.image .highlight {
-  border-radius: 0 2px 2px 0;
-}
-
-
 .box_title i b,
 .box_title b i,
 .box_title em strong,
@@ -584,22 +582,12 @@ b, strong {
   white-space: nowrap;
 }
 
+
 /*---------------------------------------------- STYLES -----------------------------------*/
 /*---------------------------------------------- IMAGES -----------------------------------*/
 .image {
  text-align: center;
  margin: 10px 0px 0px 0px;
-}
-
-.image .highlighttable {
-  text-align: left;
-  color: black;
-  padding: 0px;
-  font-size: 85%;
-  margin-top: -10px;
-}
-.mobile .image .highlighttable {
-  font-size: 72%;
 }
 
 .image img {
