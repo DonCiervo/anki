@@ -18,22 +18,33 @@
     {{#Simple Answer Solution}}
     <details class="tab simple-solution" closed>
       <summary>{{Simple Answer Name}}</summary>
-      <div class="box_text">{{Simple Answer Solution}}</div>
+      <div class="box_text">
+        {{#Simple Answer Time Complexity}}<span class="complexity-tab">⌛ {{Simple Answer Time Complexity}}</span>{{/Simple Answer Time Complexity}}
+        {{#Simple Answer Space Complexity}}<span class="complexity-tab">📦 {{Simple Answer Space Complexity}}</span>{{/Simple Answer Space Complexity}}
+        {{Simple Answer Solution}}
+      </div>
     </details>
     {{/Simple Answer Solution}}
 
     {{#Complex Answer Solution}}
     <details class="tab complex-solution" closed>
       <summary>{{Complex Answer Name}}</summary>
-      <div class="box_text">{{Complex Answer Solution}}</div>
+      <div class="box_text">
+        {{#Complex Answer Time Complexity}}<span class="complexity-tab">⌛ {{Complex Answer Time Complexity}}</span>{{/Complex Answer Time Complexity}}
+        {{#Complex Answer Space Complexity}}<span class="complexity-tab">📦 {{Complex Answer Space Complexity}}</span>{{/Complex Answer Space Complexity}}
+        {{Complex Answer Solution}}
+      </div>
     </details>
     {{/Complex Answer Solution}}
 
     {{#Complex Answer 2 Solution}}
     <details class="tab complex-solution" closed>
       <summary>{{Complex Answer 2 Name}}</summary>
-      <div class="box_text">{{Complex Answer 2 Solution}}</div>
-    </details>
+      <div class="box_text">
+        {{#Complex Answer 2 Time Complexity}}<span class="complexity-tab">⌛ {{Complex Answer 2 Time Complexity}}</span>{{/Complex Answer 2 Time Complexity}}
+        {{#Complex Answer 2 Space Complexity}}<span class="complexity-tab">📦 {{Complex Answer 2 Space Complexity}}</span>{{/Complex Answer 2 Space Complexity}}
+        {{Complex Answer 2 Solution}}
+      </div>    </details>
     {{/Complex Answer 2 Solution}}
 
   </div>

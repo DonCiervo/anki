@@ -295,6 +295,25 @@ details.tab {
   margin: 1px;
 }
 
+.complexity-tab {
+  background-color: #000a2008;
+  border-color: #0000000d;
+  border-radius: 5px;
+  border-width: 1px;
+  font-size: 90%;
+  color: #262626bf;
+  font-family: Menlo,sans-serif;
+  line-height: 1rem !important;
+  padding: .20rem;
+  white-space: pre-wrap;
+  margin-bottom: .5rem;
+}
+.nightMode .complexity-tab {
+  background-color: #ffffff12;
+  border-color: #f7faff1f;
+  color: #eff1f6bf;
+}
+
 
 
 
