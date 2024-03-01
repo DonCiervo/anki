@@ -1,37 +1,31 @@
 /*---------------------------------------------- SYNTAX HIGHLIGHTING ADD-ON ---------------*/
-/*@import url("_styles_for_syntax_highlighting.css");
-*/
+
+.highlighttable {
+  color: black;
+  font-size: 75%;
+  line-height: 100%;
+}
+.mobile .highlighttable {
+  font-size: 80%;
+}
 
 .highlight {
   text-align:left;
   font-family: droid sans mono;
-  background-color: #f2f2f2;
   padding-left: 2px !important;
   padding-right: 2px !important;
   border-radius: 0 2px 2px 0 !important;
   max-width: calc(var(--cardwidth) - 50px);
   overflow: scrollbar;
+  background-color: #f8f8f8;
 }
-.highlighttable {
-  color: black;
-  font-size: 75%;
-}
-.mobile .highlighttable {
-  font-size: 80%;
-}
+
 .linenodiv {
   padding: 0px 3px 0px 3px !important;
-  margin-right: -1px !important;
+  margin-right: 0px !important;
   border-radius: 2px 0 0 2px !important;
+  background-color: #f8f8f8;
 }
-
-
-/*.night_mode .highlight {
-  /* Invert all of the colors when using night mode in AnkiDroid */
-  color:black;
-  background-color: #C2C2C2;
-  filter: invert(1); -webkit-filter:invert(1);
-}*/
 
 .highlight .hll { background-color: #ffffcc }
 .highlight  { background: #f8f8f8; }
@@ -96,6 +90,8 @@
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 
+/* More Prominent Comment */
+.highlight .c1 { color: #58037C; font-style: italic; font-weight: bold; }
 
 .highlight b, .highlight b span {
  color: blue !important;
