@@ -554,6 +554,27 @@ fieldset.box_title {
 
 /*---------------------------------------------- STYLES -----------------------------------*/
 /*---------------------------------------------- HIGHLIGHTING -----------------------------*/
+.box_title i b,
+.box_title b i,
+.box_title em strong,
+.box_title strong em,
+.box_text i b,
+.box_text b i,
+.box_text em strong,
+.box_text strong em {
+  color: #424242 !important;
+  border: 1px solid #424242;
+  border-radius: 4px;
+  padding: 0px 6px 1px 6px;
+  background-color: #EDEDED;
+  /*font-family: monospace;*/
+  font-family: Lucida Sans Typewriter Regular;
+  font-style: normal;
+  font-size: 75%;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
 i, en {
  color: blue;
 }
@@ -575,27 +596,6 @@ b, strong {
 	color: green;
 }
 
-.box_title i b,
-.box_title b i,
-.box_title em strong,
-.box_title strong em,
-.box_text i b,
-.box_text b i,
-.box_text em strong,
-.box_text strong em {
-  color: #424242 !important;
-  border: 1px solid #424242;
-  border-radius: 4px;
-  padding: 0px 6px 1px 6px;
-  background-color: #EDEDED;
-  /*font-family: monospace;*/
-  font-family: Lucida Sans Typewriter Regular;
-  font-style: normal;
-  font-size: 75%;
-  font-weight: normal;
-  top-margin: -1em;
-  white-space: nowrap;
-}
 
 
 /*---------------------------------------------- STYLES -----------------------------------*/
