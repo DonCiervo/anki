@@ -1,12 +1,12 @@
 /*---------------------------------------------- SYNTAX HIGHLIGHTING ADD-ON ---------------*/
-
 .highlighttable {
   color: black;
   font-size: 75%;
   line-height: 100%;
+  padding: 0 2%;
 }
 .mobile .highlighttable {
-  font-size: 80%;
+  font-size: 75%;
 }
 
 .highlight {
@@ -15,7 +15,7 @@
   padding-left: 2px !important;
   padding-right: 2px !important;
   border-radius: 0 2px 2px 0 !important;
-  max-width: calc(var(--cardwidth) - 50px);
+  //max-width: calc(var(--cardwidth) - 50px);
   overflow: scrollbar;
   background-color: #f8f8f8;
 }
@@ -24,7 +24,7 @@
   padding: 0px 3px 0px 3px !important;
   margin-right: 0px !important;
   border-radius: 2px 0 0 2px !important;
-  background-color: #f8f8f8;
+  background-color: #f8f8f8 !important;
 }
 
 .highlight .hll { background-color: #ffffcc }
@@ -362,8 +362,9 @@ details.tab {
   margin-top: 0.5rem;
   overflow: visible;
   padding-left: 1rem;
+  margin: 3px 0 5px;
   white-space: pre-wrap;
-  font-size: 90%;
+  font-size: 85%;
 }
 
 

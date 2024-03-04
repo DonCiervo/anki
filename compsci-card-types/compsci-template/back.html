@@ -48,3 +48,26 @@
   {{#Notes}}<div class="annotation notes">{{Notes}}</div>{{/Notes}}
 
 </div>
+
+
+<script> /*------------------------ ADJUST CODE WIDTH ------------------*/
+function adjustTableFontSize() {
+  const tables = document.querySelectorAll('.highlighttable');
+
+  tables.forEach(table => {
+    const parentWidth = table.parentElement.offsetWidth;
+    const tableWidth = table.offsetWidth;
+    const fontSize = parseFloat(window.getComputedStyle(table).fontSize);
+    const padding = parseFloat(window.getComputedStyle(table).paddingLeft) + parseFloat(window.getComputedStyle(table).paddingRight);
+
+    if (tableWidth + padding > parentWidth) {
+      const newFontSize = fontSize * ((parentWidth - padding) / tableWidth);
+      table.style.fontSize = newFontSize + 'px';
+    }
+  });
+}
+
+// Adjust table font size on window resize and page load
+window.addEventListener('resize', adjustTableFontSize);
+adjustTableFontSize();
+</script>
