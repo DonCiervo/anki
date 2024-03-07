@@ -1,7 +1,7 @@
 /*---------------------------------------------- SYNTAX HIGHLIGHTING ADD-ON ---------------*/
 .highlighttable {
   color: black;
-  font-size: 75%;
+  font-size: 85%;
   line-height: 100%;
   padding: 0 2%;
 }
@@ -92,6 +92,8 @@
 
 /* More Prominent Comment */
 .highlight .c1 { color: #58037C; font-style: italic; font-weight: bold; }
+.highlight .sd { color: #58037C; font-style: italic; font-weight: bold; }
+
 
 .highlight b, .highlight b span {
  color: blue !important;
