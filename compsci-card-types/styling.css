@@ -230,7 +230,7 @@
   --background: var(--tools);
   --vis: visible;
 }
-.container[class*="tools::unix"] {--text: "\1F427  Unix";}
+.container[class*="tools::linux"] {--text: "\1F427  Linux";}
 .container[class*="tools::git"] {--text: "\1F527  Git";}
 .container[class*="tools::anki"] {--text: "\2605  Anki";}
 .container[class*="tools::excel"] {--text: "\1F4CA  Excel";}
@@ -603,21 +603,6 @@ b, strong {
 
 /*---------------------------------------------- STYLES -----------------------------------*/
 /*---------------------------------------------- IMAGES -----------------------------------*/
-.image {
- text-align: center;
- margin: 10px 0px 0px 0px;
-}
-
-.image img {
-  display: block;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0px 10px 10px 10px;
-  max-width: 90%;
-  max-height: 300px;
-}
-
 .box_title img {
   display: block;
   height: auto;
@@ -625,6 +610,20 @@ b, strong {
   margin-right: auto;
   padding: 0px 0px 0px 0px;
   max-width: 80%;
+}
+
+.image_text {
+  padding: 0px 0 10px 0;
+}
+
+.image_text img {
+  display: block;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 10px 10px 10px;
+  max-width: 90%;
+  max-height: 300px;
 }
 
 

@@ -7,16 +7,18 @@
       {{Front}}
     </fieldset>
 
-    {{#Answer}}<div class="box_text">{{Answer}}	</div>{{/Answer}}
+    <div class="box_text">
+    {{#Answer}}<div>{{Answer}}</div>{{/Answer}}
 
       <!-- If no Image, keep showing preview, if there is one -->
       {{#Postview}}<div style="display: none">{{/Postview}}
-              {{#Preview}}<div class="image">{{Preview}}</div>{{/Preview}}
+              {{#Preview}}<div class="image_text">{{Preview}}</div>{{/Preview}}
       {{#Postview}}</div>{{/Postview}}
 
-      {{#Postview}}<div class="image">{{Postview}}</div>{{/Postview}}
+      {{#Postview}}<div class="image_text">{{Postview}}</div>{{/Postview}}
 
-    {{#Description}}<div class="box_text">{{Description}}</div>{{/Description}}
+    {{#Description}}<div>{{Description}}</div>{{/Description}}
+    </div>
 
   </div>
 
