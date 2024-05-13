@@ -224,6 +224,10 @@
   --background: var(--css);
   --text: "CSS";
 }
+.container[class*="coding::html"] {
+  --background: var(--html);
+  --text: "HTML";
+}
 
 /*---------------------------------------------- TOOL CUES --------------------------------*/
 .container[class*="tools::"] {
@@ -623,7 +627,7 @@ b, strong {
   margin-right: auto;
   padding: 0px 10px 10px 10px;
   max-width: 90%;
-  max-height: 300px;
+  max-height: 300px; 
 }
 
 
