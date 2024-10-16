@@ -1,68 +1,280 @@
-/*--==============================================================================
- * Anki - Customizable Language Learning Note Type
- * by Julian Hirsch | @DonCiervo
+/*==============================================================================
+ * Nostalgia Language Learning Templates
+ *
+ * Unified Stylesheet
+ * by J. Hirsch | @DonCiervo
+ * Link to repo: github.com/DonCiervo/dynamic-verb-conjugation
+ *
+ * Stylesheet Version - 3.5
+ *
 ==============================================================================*/
 
-/*-------------------------------------------------------- CUSTOMIZATION */
-/*Set the color scheme and flag (and its dimensions) from your media folder */
+/* Quick configuration:
+    Customize the color scheme and set the flag (and its dimensions)
+    you want from your media folder */
 
 :root {
-  --main-color: #71000F;
-  --accent-color: white;
-  --flag: url(_ColombiaFlag.png);
-  --flagwidth: 60px;
-  --flagheight: 40px;
   --cardwidth: 450px;
-  --font-size: 20px;
+  --font-size: 20px !important;
   --line-height: 28px;
   --background: #ffecb3;
-  --display-flag: block;
+  --show-more-brightness: brightness(0.90);
+  --show-more-brightness: 0.9;
+  --text-color: #444;
+  --font-family: ;
+  --flagheight: 40px;
+  --main-color: #484848;
+  --accent-color: darkorange;
+  --contrast1: green;
+}
+.languagefromtags[class*="spanish"] {
+  --main-color: #71000F;
+  --accent-color: darkorange;
+  --flag: url(_SpainFlag.png);
+  --flagwidth: 60px;
+}
+.languagefromtags[class*="french"] {
+  --main-color: #00008B;
+  --accent-color: teal;
+  --flag: url(_FranceFlag.png);
+  --flagwidth: 60px;
+}
+.languagefromtags[class*="portuguese"] {
+  --main-color: #062600;
+  --accent-color: teal;
+  --flag: url(_BrazilFlag.png);
+  --flagwidth: 57.33333px;
+}
+.languagefromtags[class*="swedish"] {
+  --main-color: #1E90FF;
+  --accent-color: red;
+  --flag: url(_SwedenFlag.png);
+  --flagwidth: 64px;
+}
+.languagefromtags[class*="kinyarwanda"] {
+  --main-color: #00a1de;
+  --accent-color: darkorange;
+  --flag: url(_RwandaFlag.png);
+  --flagwidth: 64px;
+}
+.languagefromtags[class*="russian"] {
+  --main-color: #71006F;
+  --accent-color: red;
+  --flag: url(_RussiaFlag.png);
+  --flagwidth: 57.33333px;
+}
+/*.nightMode {
+  --background: #282828;
+  --text-color: white;
+  --show-more-brightness: brightness(1.30);
+  --borderstroke: 1px;
 }
 
+/*=========================================================================================*/
+/*=========================================================================================*/
 
-/*-------------------------------------------------------- MODES */
 
-/* Light mode */
+/*---------------------------------------------- STYLES -----------------------------------*/
+
 .card {
-
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  margin: auto;
 }
 
-/* Dark mode */
-.card.night_mode {
+.header {
+  padding: 0px 22px;
+  margin: 0px 0px 0px 0px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 110%;
+}
+.subheader {
+  padding: 0px 0px 4px 5px;
+  text-align: left;
+  margin: -4px 0px 0px 0px;
+  font-size: 110%;
+}
+.body {
+  padding: 2px 0px 0px 5px;
+  margin: 0px 0px -2px 0px;
+  text-align: left;
+  font-size: 80%;
+}
+.center {text-align: center; margin: auto;}
+.bigger {font-size: 115%;}
+.smaller {font-size: 65%; max-height: var(--line-height);}
 
+.caps {font-variant:small-caps;}
+.bold {font-weight: bold;}
+
+.green {color: green;}
+.red {color: darkred;}
+.maincolor {color: var(--main-color);}
+
+.spaced {margin: 3px 0;}
+.dashed {
+  text-decoration: dashed underline;
+  margin-top: 5px;
+}
+.narrow {line-height: 14px;}
+
+.tenseinfo {
+  border-top: 2px dashed var(--text-color);
+  margin: -5px 0px 0px 0;
+  padding: 3px 0px;
+  border-radius: 0px;
+  font-size: 85%;
+}
+
+.infinitives {
+  background-color: ;
+  font-size: 85%;
+}
+
+.note {
+  border-left: 2px solid var(--contrast1);
+  border-bottom: 2px solid var(--contrast1);
+  border-right: 2px solid var(--contrast1);
+  border-radius: 10px;
+  padding: 2px 0px 2px 8px;
+  margin: 2px 0px 5px -1px;
+  font-size: 85%;
+  line-height: 110%;
+}
+
+.extra_toggle b i, .extra_toggle i b {
+  color: var(--main-color);
+}
+
+.translation {
+  color: var(--main-color);
+  font-style: italic;
+  font-size: 65%;
+}
+.front .translation {
+  display: none;
 }
 
 
-/*-------------------------------------------------------- CARD */
 
-.topbar {
- background-color: var(--main-color);;
- position: absolute;
- top: 0px;
- left: 0px;
- right: 0px;
- height: 6px;
- display: var(--display-flag);
+/*---------------------------------------------- PARAGRAPHS -------------------------------*/
+
+p {display: block; margin: 0;}
+
+.tenseinfo a {
+  color: var(--accent-color);
+  text-decoration: none;
+  border: 2px solid;
+  border-radius: 4px;
+  padding: 0px 5px 1px;
+  font-weight: bold;
+  margin: 2px;
+  font-size: 90%;
 }
-.android .topbar{height: 3px;}
+.tenseinfo ol, .tenseinfo ul {
+  margin-bottom: 8px;
+}
+
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+  line-height: 100%;
+}
+sub {
+  top: 0.5em;
+}
+
+u {
+    text-decoration: none;
+    background: -webkit-linear-gradient(left, black, black 100%);
+    background-position: 0 95%;
+    background-size: 10px 1px;
+    background-repeat: repeat-x;
+}
+
+ul {margin: 0px 0px 0px -15px;}
+ol {margin: 0px 0px 0px -15px;}
+
+.singleframed ul {list-style-type: '+ ';}
+
+.singleframed ol {
+  list-style: none;
+  counter-reset: item;
+}
+.singleframed ol li {
+  counter-increment: item;
+  margin-bottom: 0px;
+}
+.singleframed ol li:before {
+  margin-right: 5px;
+  margin-left: -22px;
+  margin-top: 1px;
+  margin-bottom: -15px;
+  content: counter(item);
+  background: var(--main-color);
+  background: grey;
+  border-radius: 50%;
+  color: white;
+  width: 1.0em;
+  text-align: center;
+  line-height: 100%;
+  padding: 2px;
+  font-size: 65%;
+  display: inline-block;
+  position: relative;
+  top: -1.5px;
+}
+.mobile ol li:before {padding: 3.5px 3px 2.5px 3px;}
+
+
+/*---------------------------------------------- ANNOTATIONS ------------------------------*/
+
+.singleframed i {
+ font-size: 70%;
+ color: var(--main-color);
+ line-height: var(--line-height);
+ line-height: 100%;
+ //font-stretch: condensed;
+ letter-spacing: -.7px;
+ position: relative;
+ top: -2px;
+}
+.singleframed.front i {display: none;}
+
+
+/*---------------------------------------------- CLOZES -----------------------------------*/
+
+.cloze {color: var(--main-color);font-weight: bold;}
+.cloze b {color: var(--accent-color);font-variant: ;font-size: 100%;}
+.cloze i {font-weight: normal;}
+.mobile .night_mode .cloze {color: var(--main-color);}
+//.cloze ending {color: green}
+.cloze norm {color: #505050; font-style: normal; font-weight: normal; font-size: ; }
+
+
+/*---------------------------------------------- CARD DESIGN ------------------------------*/
 
 :root {--borderstroke: 0px;}
-.front {
- max-width: var(--cardwidth); 
+.ribbon {
+ max-width: var(--cardwidth);
  margin: auto;
- padding: 10px 20px;
+ max-height: 20px;
+ padding: 20px 20px 0px 20px;
  border-radius: 10px 10px 0px 0px;
  background-color: var(--main-color);
  border: var(--borderstroke) solid var(--main-color);
  box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);
+ position: relative;
 }
 
 :root { --topbottom: 12px}
-.back {
- font-size: var(--font-size);
+.paper {
+ font-size: var(--font-size) !important;
  margin: 0 auto;
  position: relative;
- color: #444;
+ color: var(--text-color);
  line-height: var(--line-height);
  border: var(--borderstroke) solid lightgrey;
  background: -webkit-linear-gradient(bottom, lightgrey 0%, var(--background) 8%) 0 var(--topbottom);
@@ -71,14 +283,13 @@
  box-shadow: 4px 4px 4px rgba(0, 0, 0, .3);
  max-width: var(--cardwidth);
  height: auto;
- min-height: calc(var(--line-height) * 1);
+ padding: var(--topbottom) 20px var(--topbottom) 20px;
+ /*min-height: calc(var(--line-height) * 4);*/
 }
 .bkcentered {
- padding: var(--topbottom) 20px var(--topbottom) 20px;
  text-align: center;
 }
 .bkleft {
- padding: var(--topbottom) 5px var(--topbottom) 35px;
  position: relative;
 }
 .bkleft::before {
@@ -86,14 +297,38 @@
  position: absolute;
  width: 4px;
  top: 0;
- left: 25px;
+ left: 18px;
  bottom: 0;
  border: 1px solid;
  border-color: transparent lightgrey;
 }
 
 
-/*-------------------------------------------------------- DIVIDERS */
+/*---------------------------------------------- DIVIDERS AND FRAMES ----------------------*/
+
+.topbar {
+ background-color: lightgray;
+ position: fixed;
+ top: 0px;
+ left: 0px;
+ right: 0px;
+ height: 4px;
+}
+div.topbar {background-color:  var(--main-color);}
+
+.singleframed {
+ border-left: 2px solid var(--main-color);
+ padding: 3px 10px;
+ margin: -3px 12px;
+ min-height: var(--line-height);
+}
+.doubleframed {
+ border-left: 2px solid var(--main-color);
+ border-right: 2px solid var(--main-color);
+ padding: 3px 10px;
+ margin: -3px 12px;
+ min-height: var(--line-height);
+}
 
 hr {
  height: 1.5px;
@@ -108,7 +343,69 @@ hr.half {
  margin-top: calc(calc(var(--line-height) / 2) - 1.5px);
 }
 
-/*-------------------------------------------------------- IMAGES */
+
+/*---------------------------------------------- FLAG DISPLAY -----------------------------*/
+
+.flaginline {
+  display: block;
+  margin: -15px 5px 0px 0px;
+  position: absolute;
+  right: 10px;
+  border-radius: 3px;
+  background-size: 42px 25px;
+  width: 42px; height: 25px;
+  z-index: 1;
+  background-image: var(--flag);
+  border: 1px solid white;
+}
+
+.flagbefore {
+  background-image: var(--flag);
+  background-size: var(--flagwidth) var(--flagheight);
+  display: block;
+  margin: 20px auto 10px auto;
+  width: var(--flagwidth);
+  height: var(--flagheight);
+  content:"";
+  border-radius: 3px;
+}
+
+
+/*---------------------------------------------- TABLES -----------------------------------*/
+
+table {
+  border: 1px solid var(--text-color);
+  min-width: 90%;
+  margin: 5px 10px 0;
+}
+
+th, td {
+  border: 1px solid var(--text-color) !important;
+  line-height: calc(var(--line-height) * 0.4);
+  text-align: center;
+  min-width: 90%;
+  font-size: 70% !important;
+  padding: 2px 5px !important;
+}
+th {
+  //background-color: var(--text-color);
+  color: black;
+  font-weight: bold !important;
+  font-size: 80% !important;
+  text-decoration: none !important;
+}
+
+/*
+tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(odd) {background-color: lightgrey;
+
+table { border-collapse: collapse; }
+td + td, th + th { border-left: 1px solid; }
+tr + tr { border-top: 1px solid; }
+*/
+
+
+/*---------------------------------------------- IMAGES -----------------------------------*/
 
 img {max-width: 100%;}
 
@@ -129,144 +426,57 @@ img {max-width: 100%;}
 }
 
 
-/*-------------------------------------------------------- AUDIO */
+/*---------------------------------------------- AUDIO REPLAY BUTTON ----------------------*/
 
-/*---replay-button-desktop---*/
 .replay-button svg {
-  margin-top: -12.5px;
-  margin-left: 5px;
+  margin-top: -16.5px;
+  margin-left: -11px;
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 }
 .replay-button svg circle { stroke: var(--main-color); fill: var(--main-color); }
 .replay-button svg path { stroke: white; fill: white; }
 
-/*---replaybutton-ankidroid---*/
-
-.replaybutton span svg {
-  fill: white;
-  //border: 2px solid white;
-  margin-top: -14.5px;
-  margin-left: 5px;
-  position: absolute;
-  font-size: 25px;
-}
 .mobile .replaybutton span svg {
   fill: var(--main-color);
-  margin-top: -19px;
-  padding-right: 20px;
-  margin-left: -10px;
+  /*background-color: var(--main-color);*/
+  padding: 0px 1px 0px 0px;
+  margin: -19px 0px 0px -16px;
+  border: 0px solid green;
+  border-radius: 100px;
+  position: absolute;
+  font-size: 32px;
 }
 .mobile .night_mode .replaybutton span svg {fill: var(--main-color);}
 
-/*-------------------------------------------------------- FLAG DESIGN */
 
-/* Flag Before */
-.card::before {
-    background-image: var(--flag);
-    background-size: var(--flagwidth) var(--flagheight);
- display: var(--display-flag);
-    margin: 20px auto 10px auto;
-    width: var(--flagwidth);
-    height: var(--flagheight);
-    content:"";
-    border-radius: 3px;
-}
-
-
-/*-------------------------------------------------------- PARAGRAPHS AND STYLES */
-
-
-
-.header {
-  padding: 0px 0px 0px 5px;
-  margin: 0px 0px 0px 0px;
-  text-align: left;
-  font-weight: bold;
-  font-size: 125%;
-}
-.subheader {
-  padding: 0px 0px 4px 5px;
-  text-align: left;
-  margin: -4px 0px 0px 0px;
-  font-size: 110%;
-}
-.caps {font-variant:small-caps;}
-.body {
-  padding: 2px 0px 0px 5px;
-  margin: 0px 0px -2px 0px;
-  text-align: left;
-  font-size: 80%;
-}
-sub {
- font-weight: normal;
- line-height: 12px;
- margin: 0px;
- font-size: 80%;
-}
-.center {text-align: center; margin: auto;}
-p {display: block; margin: 0;}
-ul {margin: 0px 0px 0px -18px;}
-
-
-.singleframed {
- border-left: 2px solid var(--main-color);
- padding: 3px 0 3px 8px;
- margin: -3px 10px -3px 10px;
- min-height: var(--line-height);
-}
-.doubleframed {
- border-left: 2px solid var(--main-color);
- border-right: 2px solid var(--main-color);
- padding: 3px 25px 3px 25px;
- margin: -3px 5px -3px 5px;
- min-height: var(--line-height);
-}
-.mobile .doubleframed {
- padding: 3px 20px 3px 20px;
-}
-
-
-.notes {
- margin: 40px auto auto 60%;
- border-radius: 15px 0 0 15px;
- text-align: center;
- background-color: red;
- font-weight: bold;
- padding: 2px;
-}
-
-/*-------------------------------------------------------- FONTS */
-
-/*-------------------------------------------------------- FORMATTING */
-
-/*-------------------------------------------------------- CLOZE */
-
-.cloze {color: var(--main-color);font-weight: bold;}
-.cloze b {color: #333333;font-variant: small-caps;font-size: 120%;}
-.cloze i {font-weight: normal;}
-.mobile .night_mode .cloze {color: var(--main-color);}
-
-/*-------------------------------------------------------- VIEW MORE BUTTON */
+/*---------------------------------------------- SHOW-MORE BUTTON -------------------------*/
 
 .extra_toggle {
- font-size: 15px;
+ font-size: 70%;
  color: #565152;
- background-color: rgba(85,85,85,0.10);
+ background-color: var(--background);
+ filter: brightness(var(--show-more-brightness));
  border-radius: 10px;
- padding: 0px 0px 0px 0px;
- margin: 0px 0 0px 0;
+ padding: 0px 10px;
+ margin: 0px 12px;
+ line-height: calc(var(--line-height) * 0.6);
 }
+.extra_toggle:hover {
+ background-color: var(--background);
+ filter: brightness(0.88);
+}
+
 .left_75 {
-  width: 75%; 
+  width: 75%;
   text-align: left;
   padding: 0px 0px 0px 30px;
 }
 .left_100 {
   text-align: left;
-  width: 92%;
-  padding: 0px 0px 0px 20px;
+  width: ;
+  padding: 0px 10px;
 }
 .center_35 {
   width: 35%;
@@ -275,28 +485,323 @@ ul {margin: 0px 0px 0px -18px;}
   margin: 0px auto 0px auto;
 }
 
-.extra_toggle:hover {background-color: rgba(85,85,85,0.12);}
-
-.extra {
- display: none;
- padding: 0px;
- margin: 0px 0px 0px 0px;
+#concept {
+ font-weight:bold;
+ color: darkgrey;
+ line-height: var(--line-height);
+ cursor: pointer;
 }
 
-/*-------------------------------------------------------- META-COMPATIBILITIES */
-/* this may not be necessary for the current deck, but is
-   included to ensure compatibility across all decks of this family */
-
-
-
-
-/*-------------------------------------------------------- ARCHIVE */
-
-#_flag {
-    left: ;
-    right: 10px;
-    bottom: 10px;
-    top: unset;
+details[open] #concept {
+ text-decoration: underline;
+ color: unset;
 }
 
-/*-------------------------------------------------------- END OF TEMPLATE */
+.key-cue {
+  float: right;
+  margin-right: 0px;
+  font-weight: normal;
+  position: relative;
+  top: -0.5px;
+  font-weight: bold;
+  font-size: 120%;
+}
+.mobile .key-cue {
+  display: none;
+}
+
+kbd {
+ font-size: 50%;
+ //color: darkgrey;
+ line-height: var(--line-height);
+ line-height: 100%;
+ border: .8px solid;
+ border-radius: 3px;
+ position: relative;
+ top: -4.0px;
+ padding: .1em .6em;
+}
+
+
+/*---------------------------------------------- CONJUGATION MARKUP -----------------------*/
+/*---------------------------------------------- BRACKETS FOR MARKUP ----------------------*/
+.languagefromtags {
+  --object-color: #3A2C2C;
+  --aux-color: var(--accent-color);
+  --participle-color: var(--main-color);
+  --reflexive-color: var(--main-color);
+  --stem-color: var(--main-color);
+  --ending-color: var(--accent-color);
+  --bracket-stroke: 1.5px;
+  --bracket-height: 3px;
+}
+.markup [data-bracket], .markup [left-bracket], .markup [right-bracket]{
+  display: inline-block;
+  vertical-align:top;
+  position:relative;
+  margin-bottom: calc(var(--line-height) - var(--bracket-stroke) - var(--bracket-height));
+  padding: 0px 0px;
+}
+.markup [data-bracket]:after, .markup [left-bracket]:after, .markup [right-bracket]:after {
+  content:"";
+  display:block;
+  height: var(--bracket-height);
+  border: var(--bracket-stroke) solid black;
+  border-top:none;
+  margin: -4px 0px 4px;
+  border-radius: 0 0 3px 3px;
+}
+.markup [data-bracket].broader-bracket:after{
+  margin-left: -4px;
+  margin-right: -4px;
+}
+.markup [left-bracket].broader-bracket:after{
+  margin-left: -4px;
+}
+.markup [right-bracket].broader-bracket:after{
+  margin-right: -4px;
+}
+
+
+/* hiddenlabel is necessary to get the width of the before element*/
+/* The css all labels share */
+.markup [data-bracket]:before, .markup [left-bracket]:before, .markup [right-bracket]:before, .hiddenlabel {
+  position:absolute;
+  top: 92%;
+  font-size:60%;
+  line-height: 90%;
+  font-weight: bold;
+  white-space: normal; /* could be normal for wrapping */
+  left:50%;
+  transform:translateX(-50%);
+  text-align: center;
+  padding: 0px 2px;
+}
+/* individual content attributes */
+.markup [data-bracket]:before, .hiddenlabel {content: attr(data-bracket);}
+.markup [left-bracket]:before {content:attr(left-bracket); text-align: right;}
+.markup [right-bracket]:before {content:attr(right-bracket); text-align: left;}
+
+/* Hides this type of bracket and prevents formatting issues */
+[data-bracket="prompt"]::before,
+[data-bracket="prompt"]::after {
+  display:  !important;
+}
+[data-bracket="prompt"] {
+	margin-bottom: 0px !important;
+  padding: 0 !important;
+}
+
+[right-bracket*="gend"] {
+	margin-bottom: 0px !important;
+}
+
+/* color markup*/
+.markup [right-bracket*="gender"], .markup [right-bracket*="number"] {
+	color: var(--ending-color);
+}
+.markup [right-bracket*="gender"]:after, .markup [right-bracket*="number"]:after {
+	border: var(--bracket-stroke) solid var(--ending-color) !important;
+  border-top: none !important;
+}
+
+.markup [data-bracket*="aux"], .markup [right-bracket*="aux"] {
+  color: var(--aux-color);
+}
+.markup [data-bracket*="aux"]:after, .markup [right-bracket*="aux"]:after {
+	border: var(--bracket-stroke) solid var(--aux-color) !important;
+  border-top: none !important;
+}
+
+.markup [data-bracket*="refl"] {
+	color: var(--reflexive-color);
+}
+.markup [data-bracket*="refl"]:after {
+	border: var(--bracket-stroke) solid var(--reflexive-color) !important;
+  border-top: none !important;
+}
+
+.markup [data-bracket*="part"], .markup [right-bracket*="part"], .markup [left-bracket*="part"] {
+	color: var(--participle-color);
+}
+.markup [data-bracket*="part"]:after, .markup [right-bracket*="part"]:after, .markup [left-bracket*="part"]:after {
+	border: var(--bracket-stroke) solid var(--participle-color) !important;
+  border-top: none !important;
+}
+
+.markup [left-bracket*="stem"], .markup [data-bracket*="stem"] {
+	color: var(--stem-color);
+}
+.markup [left-bracket*="stem"]:after, .markup [data-bracket*="stem"]:after {
+	border: var(--bracket-stroke) solid var(--stem-color) !important;
+  border-top: none !important;
+}
+
+.markup [right-bracket*="ending"], .markup [data-bracket*="ending"] {
+	color: var(--ending-color);
+}
+.markup [right-bracket*="ending"]:after, .markup [data-bracket*="ending"]:after  {
+	border: var(--bracket-stroke) solid var(--ending-color) !important;
+  border-top: none !important;
+}
+
+/* // Experiments with a key
+.markup .conjugation_key {
+  font-weight: ;
+  line-height: 100%;
+  font-size: 12px;
+  margin-top: var(--line-height);
+  display: block;
+  padding-bottom: calc(var(--line-height) - calc(2 * 12px));
+  //padding-bottom: calc(var(--font-size) / 6);
+  list-style-type: unset;
+}
+.markup .conjugation_key li.aux  {
+  font-weight: bold;
+  color: red;
+}
+.markup .conjugation_key li.part  {
+  font-weight: bold;
+  color: darkblue;
+}*/
+
+/* Hides markup of all empty bracket elements*/
+[data-bracket]:empty,
+[data-bracket]:empty::before,
+[data-bracket]:empty::after {
+  display: none;
+}
+
+.markup .participle {white-space: nowrap;}
+.markup .verb {white-space: nowrap;}
+.oneword {white-space: nowrap;}
+
+.back #conjugation, .back #prompt {
+  cursor: pointer;
+}
+
+/*---------------------------------------------- TOOLTIP MARKUP ---------------------------*/
+.back .tooltip {
+  position: relative;
+  display: inline-block;
+  --text-color: white;
+  --background-color: #999999;
+  --border-color: #999999;
+  --border-stroke: 2px;
+}
+
+.back .tooltip::before {
+  content: attr(tooltext);
+  transform: translateX(-50%);
+  font-size: 60%;
+  font-weight: normal;
+  pointer-events: none;
+  max-width: 250px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+  border-radius: 8px;
+  padding: 1px 5px !important;
+  position: absolute;
+  z-index: 1;
+  top: -18px;
+  left: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  border: var(--border-stroke) solid var(--border-color);
+  line-height: 100%;
+}
+.back .left.tooltip::before {
+  content: attr(tooltext);
+  transform: translateX(-10%);
+}
+.back .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--border-color) transparent transparent transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.markup .tooltip::before, .markup .tooltip::after {
+  opacity: 1;
+  transition: all 0.4s 1s ease; /** that's the magic **/
+}
+
+
+/*---------------------------------------------- ERROR REPORT FORM ------------------------*/
+#report {
+  background-color: #555;
+  color: white;
+  padding: 2px 15px;
+  margin-top: 4px;
+  border: 0px solid var(--main-color);
+  cursor: pointer;
+  position: fixed;
+  top: 0px;
+  right: 10px;
+  max-width: 120px;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 60%;
+  text-align: center;
+  opacity: 0.7;
+}
+
+details[open]#report {
+  opacity: 0.95;
+}
+#report:hover {
+  opacity: 0.9;
+}
+
+#report a {
+  color: white;
+  text-decoration: underline;
+}
+
+details#report > summary {
+  list-style: none;
+}
+details#report > summary::-webkit-details-marker {
+  display: none;
+}
+
+
+/*---------------------------------------------- IPA MARKING - LEGACY ---------------------*/
+
+blue{color:#7AC6DC;}
+blue{color:royalblue;}
+red{color:#e91212;}
+purple{color:#c655f2;}
+/*.night_mode blue{color:#80aaff;}
+.night_mode red{color:#ff8080;}*/
+/* Part of Speech */ gr{color: gray;font-size: 60%; max-height: var(--line-height); margin-bottom: -20px;display:none;}
+
+
+/* stuff of the detailed IPA */
+cm{font-size: 1.0em; font-family:sans-serif}
+cm b{ color: #2c298c;}
+.night_mode cm b{ color: lightblue;}
+
+/* color of the primary-stress and secondary-stress marker */
+cm clblue{color:CornflowerBlue; font-size: 1.0em; font-weight:900;}
+
+/*
+color of the long/semilong marker
+IPA has some really bad choices for marking -- the long/semilong marker is barely visible... so I make it red, and a bit big bigger, in order for it to be visible. I also change the font-family  to serif, so the visibility is better.
+In Windows it looks like a charm, but does it look good on Android and MacOS? Well I hope so.
+*/
+cl{ color:red; font-size: 1.0em; font-weight:900; font-family:serif;}
+.night_mode cl{ color:#ff8080; font-size: 1.0em; font-weight:900;}
+comma{color:#61ba79;font-size: 1.0em;}
+
+/* color of the dot in the detailed IPA */d { color:gray; }
+
+
+/*============================================== END OF TEMPLATE ==========================*/
