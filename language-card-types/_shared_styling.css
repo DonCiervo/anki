@@ -205,31 +205,32 @@ ol {margin: 0px 0px 0px -15px;}
 .singleframed ul li {
   border: 3px solid var(--main-color);
   min-width: 0%;
-  max-width: 75%;
+  max-width: 80%;
+  width: fit-content;
   border-radius: 10px;
-  display: inline-block;
+  display: block;
   padding: 0 3% 0 3%;
   position: relative;
   background-color: #EEEEEE;
+}
+
+.singleframed ul li::after {
+  content: "";
+  border-radius: 5px; /* Rounded edges for the pointer */
+  position: absolute; /* Positioning relative to the bubble */
+  bottom: -13px; /* Position above the bubble */
 }
 
 .singleframed ul li:nth-child(odd) {
   margin: -3px auto -3px -5%;
 }
 .singleframed ul li:nth-child(odd)::after {
-  content: "";
-  border-radius: 5px; /* Rounded edges for the pointer */
-  position: absolute; /* Positioning relative to the bubble */
-  bottom: -13px; /* Position above the bubble */
   left: 5%; /* Center horizontally */
-  transform: translateX(0%) rotate(0deg); /* Center and rotate */
-
   /* Triangle */
   border-left: 12px solid transparent; /* Adjust width */
   border-right: 20px solid transparent; /* Adjust width */
   border-top: 12px solid var(--main-color); /* Same color as the bubble */
 }
-
 
 .singleframed ul li:nth-child(even) {
   float: right;
@@ -237,13 +238,7 @@ ol {margin: 0px 0px 0px -15px;}
   overflow: visible;
 }
 .singleframed ul li:nth-child(even)::after {
-  content: "";
-  border-radius: 5px; /* Rounded edges for the pointer */
-  position: absolute; /* Positioning relative to the bubble */
-  bottom: -13px; /* Position above the bubble */
   right: 5%; /* Center horizontally */
-  transform: translateX(0%) rotate(0deg); /* Center and rotate */
-
   /* Triangle */
   border-left: 20px solid transparent; /* Adjust width */
   border-right: 12px solid transparent; /* Adjust width */
@@ -375,7 +370,7 @@ div.topbar {background-color:  var(--main-color);}
  padding: 3px 10px;
  margin: -3px 12px;
  min-height: var(--line-height);
- overflow: hidden;		/* Needed for speech bubbles to float correctly and not break frames */
+ overflow-x: hidden;		/* Needed for speech bubbles to float correctly and not break frames */
 }
 .doubleframed {
  border-left: 2px solid var(--main-color);
