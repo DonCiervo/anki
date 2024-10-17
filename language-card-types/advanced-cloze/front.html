@@ -1,0 +1,167 @@
+<!--==============================================================================
+ * Unified Cloze Randomization Cards
+ *
+ * Verb Conjugation in Anki using randomized cloze cards
+ * by J. Hirsch | @DonCiervo
+ * Link to repo: github.com/DonCiervo/dynamic-verb-conjugation
+ *
+ * Cloze Version - 1.3.5
+ *
+ * Inspired by Andy's Ultimate Conjugation | asiteaboutnothing.net
+ *
+==============================================================================-->
+<div class="languagefromtags {{Tags}}">
+
+<div class="topbar"></div>
+<div class="flagbefore"></div>
+
+<fieldset class="ribbon"><legend></legend>
+<!--<div class="flaginline"></div>-->
+</fieldset>
+
+<div class="paper bkleft">
+
+{{#Prompt}}<div class="header caps">{{Prompt}}</div><br>{{/Prompt}}
+
+<div class="singleframed front">
+
+<div id="fields-output"></div>
+
+<div class="note-field" hidden>{{cloze:Sentence-1}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-2}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-3}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-4}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-5}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-6}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-7}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-8}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-9}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-10}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-11}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-12}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-13}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-14}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-15}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-16}}</div>
+</div>
+
+{{#Rule}}<br><br>{{/Rule}}
+
+</div></div>
+
+<details id="report">
+  <summary>⚠ Report a problem!</summary>
+  <br>
+    <a id="myLink" href="https://github.com/DonCiervo/dynamic-verb-conjugation/issues/new?title=Template+or+Content+issue&body=%23%23%23+Please+describe+the+problem+you%27re+experiencing.+Thanks%21+-J%0A%0AMy+issue+is...%0A%0A%0A%0A%0A---+Don%27t+change+anything+after+this+line%21+---%0A%0A%26nbsp%3B%0A%26nbsp%3B%0A%26nbsp%3B%0A%3Chr%3E%0A%0A%3Cdetails%3E%0A%3Csummary%3EDebug+Info%3C%2Fsummary%3E%0A%0A%23%23%23+Parameters%0A1.+Client:+%22Client+placeholder%22+%0A2.+Version:+%22Version+placeholder%22+%0A%0A%23%23%23+Active+HTML%0A%60%60%60html%0A%22HTML+placeholder%22%0A%60%60%60%0A%3C%2Fdetails%3E&labels=bug,Lang&assignees=DonCiervo">
+      &#128203; GitHub Issue
+    </a>
+<br><br>
+</details>
+
+
+<script> /*------------------------------------- ISSUE REPORT BUTTON ----------------------*/
+document.getElementById('report').addEventListener('click', function() {
+  activeHTML = document.querySelector('#fields-output').innerHTML;
+  var encodedHTML = encodeURIComponent(activeHTML);
+  var anchor1 = document.getElementById('myLink');
+
+  var url1 = anchor1.getAttribute('href');
+  var newUrl1 = url1.replace('%22HTML+placeholder%22', encodeURIComponent(activeHTML));
+
+  var lang_lower = "{{Tags}}".split(":")[0]
+  var lang = lang_lower.charAt(0).toUpperCase() + lang_lower.slice(1);
+
+  newUrl1 = newUrl1.replace('Lang', lang);
+  newUrl1 = newUrl1.replace('%22Client+placeholder%22', encodeURIComponent(navigator.userAgent));
+  newUrl1 = newUrl1.replace('%22Version+placeholder%22', encodeURIComponent("Cloze 1.3.5"));
+
+  anchor1.setAttribute('href', newUrl1);
+});
+
+/* Collapse field when clicking elsewhere */
+document.addEventListener("click", function(e) {
+  var reportButton = document.getElementById('report');
+  if (e.target !== reportButton)
+    reportButton.removeAttribute('open');
+});
+</script>
+
+
+<script> /*------------------------------------- CHOOSE RANDOM FIELD FOR SAME CLOZES ------*/
+/*Thanks to @hkr for the original idea on the forums */
+{
+  let fieldsContainer = document.getElementById("fields-output");
+
+  // Try ".field"s first - Resort to ".note-field"s if the former are empty
+  let fields = [...document.querySelectorAll(".field")];
+  if (!fields.length)
+    fields = [...document.querySelectorAll(".note-field")];
+
+  // Discard empty elements - create a randomIndex of fields and store the index
+  fields = fields.filter(field => field.textContent.trim() !== '');
+  let randomIndex = Math.floor(Math.random() * fields.length);
+  sessionStorage.setItem("randomIndex", randomIndex);
+
+  // Append the selected field to the container and set to visible
+  fieldsContainer.appendChild(fields[randomIndex]);
+  fields[randomIndex].hidden = false;
+  //window.front.appendChild(document.createTextNode("This card randomizes between " + fields.length + " clozes"));
+}
+</script>
+
+
+<div id="front"></div>
+
+<script> /*------------------------------------- ATTRIBUTES RANDOMIZATION -------------------
+* Randomizes sentence parts like prompts, pronouns and context
+* Only necessary for the shared 'Verb Conjugation' deck
+*
+* @author J. Hirsch | @DonCiervo
+*/
+var randGroups = ["rand1", "rand2", "rand3", "rand4"];
+var attributeSelection = [];
+
+// for each group
+for (var i = 0; i < randGroups.length; i++) {
+	var groupItems = document.getElementsByClassName(randGroups[i]);
+
+	var groupInd = null;
+	for (var j = 0; j < groupItems.length; j++) {
+
+		// turn group item into array
+		if (groupItems[j].innerHTML.includes("//"))
+			groupItemArr = groupItems[j].innerHTML.split("//");
+		else if (groupItems[j].innerHTML.includes(";"))
+			groupItemArr = groupItems[j].innerHTML.split(";");
+		else {	/*no splits or index updates needed*/
+			groupItemArr = [groupItems[j].innerHTML];
+		}
+
+		if (groupInd == null) /* create random index */
+			groupInd = Math.floor(Math.random() * groupItemArr.length);
+
+		/* Use index, default to 0 if undefined */
+		groupItems[j].innerHTML = groupItemArr[groupInd] ?? groupItemArr[0];
+	}
+	attributeSelection.push(groupInd);
+}
+// Persist groups and indices to back
+sessionStorage.setItem("randomized_indices", JSON.stringify(attributeSelection));
+sessionStorage.setItem("rand_groups", JSON.stringify(randGroups));
+</script>
+
+<script> /*------------------------------------- REMOVE TITLE ATTRIBUTES ------------------*/
+var allElements = document.querySelectorAll('*');
+allElements.forEach(function(element) {
+  element.removeAttribute('title');
+});
+</script>
+
+<script> /*------------------------------------- PERSIST INFINITIVE FORM ------------------*/
+var inf = document.getElementsByClassName("infinitive")[0].innerHTML;
+sessionStorage.setItem("inf", inf);
+</script>
+
+<script> /*-FRENCH------------------------------ REPLACE SHORTENED J' ON FRONT ------------*/
+document.getElementsByClassName("firstperson")[0].innerHTML = "je ";
+</script>

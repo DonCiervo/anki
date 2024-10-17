@@ -1,0 +1,339 @@
+<!--==============================================================================
+ * Unified Cloze Randomization Cards
+ *
+ * Verb Conjugation in Anki using randomized cloze cards
+ * by J. Hirsch | @DonCiervo
+ * Link to repo: github.com/DonCiervo/dynamic-verb-conjugation
+ *
+ * Cloze Version - 1.3.5
+ *
+ * Inspired by Andy's Ultimate Conjugation | asiteaboutnothing.net
+ *
+==============================================================================-->
+<div class="languagefromtags {{Tags}}">
+
+<div class="topbar"></div>
+<div class="flagbefore"></div>
+
+<fieldset class="ribbon"><legend></legend>
+<!--<div class="flaginline"></div>-->
+</fieldset>
+
+<div class="paper bkleft">
+
+{{#Prompt}}<div class="header caps">{{Prompt}}</div><br>{{/Prompt}}
+
+<div class="singleframed back">
+
+<div id="fields-output"></div>
+
+<div class="note-field" hidden>{{cloze:Sentence-1}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-2}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-3}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-4}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-5}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-6}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-7}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-8}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-9}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-10}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-11}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-12}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-13}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-14}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-15}}</div>
+<div class="note-field" hidden>{{cloze:Sentence-16}}</div>
+</div>
+
+{{#Rule}}
+<br>
+
+<details id="details" class="extra_toggle left_100">
+  <summary id="concept">{{Concept}} <span class="key-cue"> 🖯 <kbd>C</kbd></span></summary>
+  {{Rule}}
+</details>
+{{/Rule}}
+
+</div></div>
+
+<details id="report">
+  <summary>⚠ Report a problem!</summary>
+  <br>
+    <a id="myLink" href="https://github.com/DonCiervo/dynamic-verb-conjugation/issues/new?title=Template+or+Content+issue&body=%23%23%23+Please+describe+the+problem+you%27re+experiencing.+Thanks%21+-J%0A%0AMy+issue+is...%0A%0A%0A%0A%0A---+Don%27t+change+anything+after+this+line%21+---%0A%0A%26nbsp%3B%0A%26nbsp%3B%0A%26nbsp%3B%0A%3Chr%3E%0A%0A%3Cdetails%3E%0A%3Csummary%3EDebug+Info%3C%2Fsummary%3E%0A%0A%23%23%23+Parameters%0A1.+Client:+%22Client+placeholder%22+%0A2.+Version:+%22Version+placeholder%22+%0A%0A%23%23%23+Active+HTML%0A%60%60%60html%0A%22HTML+placeholder%22%0A%60%60%60%0A%3C%2Fdetails%3E&labels=bug,Lang&assignees=DonCiervo">
+      &#128203; GitHub Issue
+    </a>
+<br><br>
+</details>
+
+
+<script> /*------------------------------------- ISSUE REPORT BUTTON ----------------------*/
+document.getElementById('report').addEventListener('click', function() {
+  activeHTML = document.querySelector('#fields-output').innerHTML;
+  var encodedHTML = encodeURIComponent(activeHTML);
+  var anchor1 = document.getElementById('myLink');
+
+  var url1 = anchor1.getAttribute('href');
+  var newUrl1 = url1.replace('%22HTML+placeholder%22', encodeURIComponent(activeHTML));
+
+  var lang_lower = "{{Tags}}".split(":")[0]
+  var lang = lang_lower.charAt(0).toUpperCase() + lang_lower.slice(1);
+
+  newUrl1 = newUrl1.replace('Lang', lang);
+  newUrl1 = newUrl1.replace('%22Client+placeholder%22', encodeURIComponent(navigator.userAgent));
+  newUrl1 = newUrl1.replace('%22Version+placeholder%22', encodeURIComponent("Cloze 1.3.5"));
+
+  anchor1.setAttribute('href', newUrl1);
+});
+
+/* Collapse field when clicking elsewhere */
+document.addEventListener("click", function(e) {
+  var reportButton = document.getElementById('report');
+  if (e.target !== reportButton)
+    reportButton.removeAttribute('open');
+});
+</script>
+
+
+<script>/*------------------------------------- SHOW MORE BUTTON --------------------------*/
+document.addEventListener("keyup", function(e) {
+  if (e.key === "c") {
+    var detailsElement = document.getElementById("details");
+    detailsElement.open = !detailsElement.open;
+  }
+});
+</script>
+
+
+<script> /*------------------------------------- CHOOSE RANDOM FIELD FOR SAME CLOZES ------*/
+/*script thanks to @hkr from 'shorturl.at/LNPS8' */
+{
+  let fieldsContainer = document.getElementById("fields-output");
+
+  // Try ".field"s first - Resort to ".note-field"s if the former are empty
+  let fields = Array.from(document.querySelectorAll(".field"));
+  if (!fields.length)
+    fields = Array.from(document.querySelectorAll(".note-field"));
+	fields = fields.filter(field => field.textContent.trim() !== '');
+
+  // Use the random index from front - if available
+  let randomIndex;
+  if (sessionStorage.getItem("randomIndex")) {
+  	randomIndex = sessionStorage.getItem("randomIndex");
+  }
+  // Previewer(if Back Side Only) and Card Layout Editor(Back Template)
+  else {
+    randomIndex = Math.floor(Math.random() * fields.length);
+    sessionStorage.setItem("randomIndex", randomIndex);
+  }
+
+  // Append the selected field to the container and set to visible
+  fieldsContainer.appendChild(fields[randomIndex]);
+  fields[randomIndex].hidden = false;
+  //window.back.appendChild(document.createTextNode("This card randomizes between " + fields.length + " clozes"));
+}
+</script>
+
+
+<div id="back"></div>
+
+<script> /*------------------------------------- ATTRIBUTES RANDOMIZATION -------------------
+* Uses random selection from the front of the card
+* Only necessary for the shared 'Verb Conjugation' deck
+*
+* @author J. Hirsch | @DonCiervo
+*/
+var randGroups = JSON.parse(sessionStorage.getItem("rand_groups"));
+var attributeSelection = JSON.parse(sessionStorage.getItem("randomized_indices"));
+
+// for each group
+for (var i = 0; i < randGroups.length; i++) {
+	var groupItems = document.getElementsByClassName(randGroups[i]);
+
+	var groupInd = null;
+	for (var j = 0; j < groupItems.length; j++) {
+
+		// turn group item into array
+		if (groupItems[j].innerHTML.includes("//"))
+			groupItemArr = groupItems[j].innerHTML.split("//");
+		else if (groupItems[j].innerHTML.includes(";"))
+			groupItemArr = groupItems[j].innerHTML.split(";");
+		else
+			continue; 	/*no splits needed*/
+
+		groupItems[j].innerHTML = groupItemArr[attributeSelection[i]];
+	}
+}
+</script>
+
+
+<script> /*-FRENCH------------------------------ CONTRACT PREFIXES WHERE NECESSARY --------*/
+var objpron = document.querySelector('[class*="french"] span[data-bracket="object pronoun"]');
+var pr = objpron.innerHTML;
+var cloze = document.getElementsByClassName("cloze")[0].innerText;
+
+if ((pr.endsWith("e ") || (pr === "la ")) && cloze.match('^h?[aieouâêîôûïàéèùœ].*'))
+  objpron.innerHTML = pr.replace("e ", "'").replace("a ", "'");
+</script>
+
+
+<script> /*-FRENCH------------------------------ REPLACE J' IF PREFIX EXISTS --------------*/
+var objpron = document.querySelector('[class*="french"] span[data-bracket="object pronoun"]');
+if (objpron.innerHTML.length > 0)
+	document.getElementsByClassName("firstperson")[0].innerHTML = "je ";
+</script>
+
+
+<script>/*------------------------------------- MARK INFINITIVE ---------------------------*/
+var inf = sessionStorage.getItem("inf");
+var infs = document.getElementsByClassName("infinitives")[0];
+
+var re_inf = new RegExp("(?<!\\S)" + inf, "gui")
+if (infs.innerHTML.match(re_inf)) {
+	infs.innerHTML = infs.innerHTML.replace(re_inf, '<span class="maincolor bold">' + inf + '</span>');
+}
+else if (inf.startsWith("s'") || inf.startsWith("se ")) {
+	var search_str = inf.replace("s'","").replace("se ","")
+	infs.innerHTML = infs.innerHTML.replace(search_str, '<span class="maincolor bold">' + inf + '</span>');
+}
+
+// Replace title verb
+var title_verb = document.getElementById("titleverb");
+title_verb.innerHTML = inf;
+</script>
+
+
+<script> /*------------------------------------- ADD / REMOVE MARKUP ------------------------
+* Adds brackets and labels the elements with their attribute values
+*
+* Changes padding of parent elements if their labels are wider than the parent
+* Prevents overlapping of labels by spacing marked-up elements accurately
+* Supports (centered) data-bracket, left-bracket, right-bracket
+* Only necessary for the shared 'Verb Conjugation' deck
+*
+* @author J. Hirsch | @DonCiervo
+*/
+
+{/* When prompt label is shown, hide conjugation labels - and vice versa */
+const promptElement = document.getElementById("prompt");
+const conjugationElement = document.getElementById("conjugation");
+
+if (promptElement) {
+  promptElement.addEventListener("click", function() {
+    toggleMarkup("prompt", "conjugation");
+  });
+}
+
+if (conjugationElement) {
+  conjugationElement.addEventListener("click", function() {
+    toggleMarkup("conjugation", "prompt");
+  });
+}}
+
+function toggleMarkup(element1, element2) {
+  const el1 = document.getElementById(element1);
+  const el2 = document.getElementById(element2);
+
+  if (el1) {
+    el1.classList.toggle("markup");
+    updateBrackets(element1);
+  }
+
+  if (el2) {
+    el2.classList.remove("markup");
+    updateBrackets(element2);
+  }
+}
+
+function isFirstInLine(element, parent) {
+  const rect = element.getBoundingClientRect();
+  const parentRect = parent.getBoundingClientRect();
+
+  // Calculate the leftmost position of the element within the parent container
+  const elementLeft = rect.left - parentRect.left;
+
+  // Check if the element is the first element in the line
+  return (elementLeft <= 0);
+}
+
+function updateBrackets(targetId) {
+  var combinedBrackets = document.querySelectorAll('#'+CSS.escape(targetId) + ' :is([right-bracket], [left-bracket], [data-bracket]):not(:empty)');
+  var length = combinedBrackets.length;
+  var parent = document.querySelectorAll('#'+CSS.escape(targetId))[0];
+
+  // remove padding if no class "markup"
+  if (!document.getElementById(targetId).classList.contains("markup")) {
+    for (var i = 0; i < length; i++) {
+      var bracket = combinedBrackets[i];
+
+      bracket.classList.remove("broader-bracket");
+      bracket.style.paddingLeft = bracket.style.paddingRight = bracket.style.marginLeft = bracket.style.marginRight = '0px';
+    }
+  }
+
+  // add padding if class "markup"
+  else {
+
+    function getBracketPadding(bracket) {
+      var parent_width = bracket.offsetWidth;
+      var label_text = bracket.hasAttribute('data-bracket') ? bracket.getAttribute('data-bracket') :
+        bracket.hasAttribute('right-bracket') ? bracket.getAttribute('right-bracket') :
+        bracket.hasAttribute('left-bracket') ? bracket.getAttribute('left-bracket') : null;
+
+      var max_width = 0;
+      for (let word of label_text.split(' '))	{
+        // create temp element with same styling and text as labels
+        var div = document.createElement('div');
+        div.classList.add('hiddenlabel');
+        div.textContent = word;
+        document.body.appendChild(div);
+
+        // get width of that temp element before deleting it
+        var label_width = div.offsetWidth;
+        div.parentNode.removeChild(div);
+
+        if (label_width > max_width)
+          max_width = label_width;
+      }
+      return max_width - parent_width;
+    }
+
+    // Assign padding and margins
+    for (var i = 0; i < length; i++) {
+    var bracket = combinedBrackets[i];
+    var padding = getBracketPadding(bracket);
+    var padding_left = 0, padding_right = 0, margin_left = 0, margin_right = 0;
+
+    if (padding < 0) {
+       ['left-bracket', 'right-bracket'].forEach(function(attributeName) {
+         if (bracket.getAttribute(attributeName)) {
+           bracket.setAttribute('data-bracket', bracket.getAttribute(attributeName));
+           bracket.removeAttribute(attributeName);
+         }
+       });
+    }
+
+    // assign appropriate padding to each bracket
+    if (bracket.hasAttribute('left-bracket')) {
+      padding_left = padding
+    }
+    else if (bracket.hasAttribute('right-bracket'))
+      padding_right = padding
+    else if (bracket.hasAttribute('data-bracket')) {
+      padding_right = padding_left = padding/2;
+    }
+
+    if (padding > 0)
+      bracket.classList.toggle("broader-bracket");
+
+    bracket.style.paddingLeft = padding_left + 'px';
+    bracket.style.paddingRight = padding_right + 'px';
+
+    // for first and last brackets, add negative margins for a better look
+    // if bracket is first in the line - skip negative margins to avoid going out of bounds
+    if ((i == 0) && !isFirstInLine(bracket, parent))
+      bracket.style.marginLeft = '-' + padding_left + 'px';
+    if (i == (length-1))
+      bracket.style.marginRight = '-' + padding_right + 'px';
+    }
+}}
+</script>
