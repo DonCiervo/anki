@@ -245,7 +245,12 @@ ol {margin: 0px 0px 0px -15px;}
   border-top: 12px solid var(--main-color); /* Same color as the bubble */
 }
 
-
+/* Clear floats after the last list item - ensures other elements in .singleframed don't move up */
+.singleframed ul::after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
 /*---------- Circled Numbers Lists ----------*/
 .singleframed ol {
