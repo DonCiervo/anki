@@ -200,7 +200,10 @@ ol {margin: 0px 0px 0px -15px;}
 
 
 /*---------- Speech Bubbles (Simple) ----------*/
-.singleframed ul {list-style-type: '';}
+.singleframed ul {
+  list-style-type: '';
+  margin: 0px -12px 0px -25px;
+}
 
 .singleframed ul li {
   border: 3px solid var(--main-color);
