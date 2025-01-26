@@ -1,23 +1,11 @@
 /*---------------------------------------------- SYNTAX HIGHLIGHTING ADD-ON ---------------*/
 .highlighttable {
   color: black;
-  font-size: 85%;
   line-height: 100%;
   padding: 0 2%;
 }
 .mobile .highlighttable {
   font-size: 75%;
-}
-
-.highlight {
-  text-align:left;
-  font-family: droid sans mono;
-  padding-left: 2px !important;
-  padding-right: 2px !important;
-  border-radius: 0 2px 2px 0 !important;
-  //max-width: calc(var(--cardwidth) - 50px);
-  overflow: scrollbar;
-  background-color: #f8f8f8;
 }
 
 .linenodiv {
@@ -99,8 +87,33 @@
  color: blue !important;
 }
 
+/*---------------------------------------------- SYNTAX HIGHLIGHTING NG -------------------*/
 
 
+.highlight {
+  text-align:left;
+  font-family: droid sans mono;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  border-radius: 2px !important;
+  //max-width: calc(var(--cardwidth) - 50px);
+  overflow: scrollbar;
+  background-color: #f8f8f8;
+  color: black;
+  font-size: 100%;
+  line-height: 100%;
+}
+.mobile .highlight {
+  font-size: 75%;
+}
+
+table .linenos {
+  color: black;
+  font-weight: bold;
+  padding-right: 2px;
+  margin-right: 2px;
+  border-right: 5px solid #212121;
+}
 
 
 /*=========================================================================================*/
@@ -236,6 +249,7 @@
 }
 .container[class*="tools::linux"] {--text: "\1F427  Linux";}
 .container[class*="tools::git"] {--text: "\1F527  Git";}
+.container[class*="tools::docker"] {--text: "🐳 Docker";}
 .container[class*="tools::anki"] {--text: "\2605  Anki";}
 .container[class*="tools::excel"] {--text: "\1F4CA  Excel";}
 .container[class*="tools::latex"] {--text: "\2328  LaTeX / Overleaf";}
@@ -461,6 +475,7 @@ fieldset.box_title {
   position: relative;
   text-decoration: none;
   display: none;
+  border: 0;
 }
 .ctag *::before {
     display: block;
