@@ -100,8 +100,8 @@
   overflow: scrollbar;
   background-color: #f8f8f8;
   color: black;
-  font-size: 100%;
-  line-height: 100%;
+  font-size: 85%;
+  line-height: 115%;
 }
 .mobile .highlight {
   font-size: 75%;
@@ -587,7 +587,8 @@ fieldset.box_title {
 .box_text i b,
 .box_text b i,
 .box_text em strong,
-.box_text strong em {
+.box_text strong em,
+code {
   color: #424242 !important;
   border: 1px solid #424242;
   border-radius: 4px;
@@ -646,7 +647,7 @@ b, strong {
   margin-right: auto;
   padding: 0px 10px 10px 10px;
   max-width: 90%;
-  max-height: 300px;
+  max-height: 300px; 
 }
 
 
