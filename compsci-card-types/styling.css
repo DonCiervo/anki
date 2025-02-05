@@ -13,6 +13,7 @@
   margin-right: 0px !important;
   border-radius: 2px 0 0 2px !important;
   background-color: #f8f8f8 !important;
+  font-size: 85%;
 }
 
 .highlight .hll { background-color: #ffffcc }
@@ -100,8 +101,8 @@
   overflow: scrollbar;
   background-color: #f8f8f8;
   color: black;
-  font-size: 100%;
-  line-height: 100%;
+  font-size: 85%;
+  line-height: 115%;
 }
 .mobile .highlight {
   font-size: 75%;
@@ -251,7 +252,8 @@ table .linenos {
   --background: var(--tools);
   --vis: visible;
 }
-.container[class*="tools::linux"] {--text: "\1F427  Linux";}
+.container[class*="tools::operating-systems::linux"] {--text: "\1F427  Linux";}
+.container[class*="tools::operating-systems::wsl"] {--text: "\229e \1F427  WSL";}
 .container[class*="tools::git"] {--text: "\1F527  Git";}
 .container[class*="tools::docker"] {--text: "🐳 Docker";}
 .container[class*="tools::anki"] {--text: "\2605  Anki";}
@@ -261,7 +263,7 @@ table .linenos {
 .container[class*="tools::firefox"] {--text: "\1F98A  Firefox";}
 .container[class*="tools::firefox"] {--text: "\1F98A  Firefox";}
 .container[class*="tools::pycharm"] {--text: "PyCharm";}
-.container[class*="tools::windows"] {--text: "\229e  Windows";}
+.container[class*="tools::operating-systems::windows"] {--text: "\229e  Windows";}
 
 
 
@@ -587,7 +589,8 @@ fieldset.box_title {
 .box_text i b,
 .box_text b i,
 .box_text em strong,
-.box_text strong em {
+.box_text strong em,
+code {
   color: #424242 !important;
   border: 1px solid #424242;
   border-radius: 4px;
@@ -646,7 +649,7 @@ b, strong {
   margin-right: auto;
   padding: 0px 10px 10px 10px;
   max-width: 90%;
-  max-height: 300px;
+  max-height: 300px; 
 }
 
 
