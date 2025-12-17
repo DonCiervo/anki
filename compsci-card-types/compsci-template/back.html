@@ -81,3 +81,17 @@ adjustTableFontSize();
     });
   })();
 </script>
+
+<script> /*------------------------ Replace ASCII Arrow with Symbol ----*/
+(function () {
+  const arrow = "➜";
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.nodeValue && node.nodeValue.includes("-->")) {
+      node.nodeValue = node.nodeValue.split("-->").join(arrow);
+    }
+  }
+})();
+</script>
