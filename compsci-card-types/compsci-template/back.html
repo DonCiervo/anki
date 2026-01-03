@@ -32,6 +32,7 @@
     <div class="r"></div>
     <div class="sql"></div>
     <div class="jayvee"></div>
+    <div class="go"></div>
   </div>
 
   <div class="roundtag">
@@ -82,16 +83,33 @@ adjustTableFontSize();
   })();
 </script>
 
-<script> /*------------------------ Replace ASCII Arrow with Symbol ----*/
+
+<script> /*------------------------ Replace Arrow Symbols --------------*/
 (function () {
-  const arrow = "➜";
+  const replacements = {
+    "-->": "➜",
+    "<-->": "⟷",
+  };
+
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
 
   let node;
   while ((node = walker.nextNode())) {
-    if (node.nodeValue && node.nodeValue.includes("-->")) {
-      node.nodeValue = node.nodeValue.split("-->").join(arrow);
+    let text = node.nodeValue;
+    if (!text) continue;
+
+    // skip nodes that contain none of the keys
+    let changed = false;
+
+    // replace longer patterns first to avoid conflicts
+    for (const from of Object.keys(replacements).sort((a, b) => b.length - a.length)) {
+      if (text.includes(from)) {
+        text = text.split(from).join(replacements[from]);
+        changed = true;
+      }
     }
+
+    if (changed) node.nodeValue = text;
   }
 })();
 </script>
