@@ -7,6 +7,7 @@
       {{Front}}
     </fieldset>
 
+    <br>
     {{#Preview}}<div class="box_text"><div class="image_text">{{Preview}}</div></div>{{/Preview}}
 
   </div>
@@ -21,6 +22,7 @@
     <div class="r"></div>
     <div class="sql"></div>
     <div class="jayvee"></div>
+    <div class="go"></div>
   </div>
 
   <div class="roundtag">
@@ -53,17 +55,18 @@ window.addEventListener('resize', adjustTableFontSize);
 adjustTableFontSize();
 </script>
 
-<script> /*------------------------ Randomize Multiple Choice Qs -------*/
-  (function () {
-    const lists = document.querySelectorAll(".image_text ul");
-    lists.forEach((ul) => {
-      const items = Array.from(ul.children);
-      for (let i = items.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [items[i], items[j]] = [items[j], items[i]];
-      }
-      ul.innerHTML = "";
-      items.forEach((li) => ul.appendChild(li));
-    });
-  })();
+
+<script>
+(function() {
+  const lists = document.querySelectorAll(".image_text ul");
+  lists.forEach((ul) => {
+    const items = Array.from(ul.children);
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    ul.innerHTML = "";
+    items.forEach((li) => ul.appendChild(li));
+  });
+})();
 </script>
