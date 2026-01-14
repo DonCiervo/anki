@@ -41,6 +41,7 @@ p {
 .paper[class*="history"] {background: #474747; color: white;}
 .paper[class*="mathematics"] {background: midnightblue; color: white;}
 .paper[class*="music"] {background: #EDEDE7; color: black;}
+.paper[class*="geoguessr"] {background: #34043B; color: white;}
 
 .paper[class*="english"] {background: #e0d3af; color: black;}
 .paper[class*="english"] b {color: black; font-variant: small-caps; font-size: 140%}
