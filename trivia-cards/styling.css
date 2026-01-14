@@ -1,0 +1,85 @@
+hr {margin: 12px 0 }
+b {color: #FBD649;} /* FBD649 */
+i {color: #57c7ff;}
+
+br {
+   display: block;
+   margin: 10px 0;
+   line-height:22px;
+}
+p {
+  padding-bottom: 5px;
+}
+
+.nightMode .box_text {
+	color:white;
+}
+
+.card {
+  font-family: arial;
+  font-size: 16px;
+  text-align: left;
+  color: black;
+  background-color: white;
+  max-width: 450px;
+  margin: 20px auto auto auto;
+  font-family: "Times New Roman", Times, serif;
+  font-family: "Courier New";
+}
+
+
+.paper {
+  background-color: black;
+  padding: 15px;
+  border-radius: 20px;
+  min-height: 310px;
+  text-align: ;
+}
+.paper[class*="geopolitics"] {background: #220707; color: white;}
+.paper[class*="philosophy"] {background: #112207; color: white;}
+.paper[class*="mythology"] {background: #1E1E37; color: white;}
+.paper[class*="history"] {background: #474747; color: white;}
+.paper[class*="mathematics"] {background: midnightblue; color: white;}
+.paper[class*="music"] {background: #EDEDE7; color: black;}
+
+.paper[class*="english"] {background: #e0d3af; color: black;}
+.paper[class*="english"] b {color: black; font-variant: small-caps; font-size: 140%}
+.paper[class*="english"] i {color: #3C4044; font-size: 85%}
+.paper[class*="english"] .alt {color: grey;}
+.paper[class*="english"] hr {border: 1px dashed black;}
+
+
+.paper img {
+  max-width: 320px;
+  max-height: 250px;
+  display:block;
+  margin: 8px auto 5px auto;
+  border-radius: 5px;
+}
+
+
+.year {
+  color: yellow;
+  font-weight: bold;
+  font-variant: small-caps;
+  font-family: "Lucida Console", "Courier New";
+  margin: 12px 0
+
+}
+.alt {
+  color: #57c7ff;
+  font-weight: bold;
+  font-variant: small-caps;
+  font-family: "Lucida Console", "Courier New";
+  line-height: 20px;
+  margin: 12px 0
+}
+.symbol2 {
+  margin-right: 3px;
+}
+
+.prompt {
+  font-size: 130%;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
