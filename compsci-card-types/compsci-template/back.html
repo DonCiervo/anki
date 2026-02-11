@@ -10,12 +10,12 @@
     <div class="box_text">
     {{#Answer}}<div>{{Answer}}</div><br>{{/Answer}}
 
-      <!-- If no Image, keep showing preview, if there is one -->
-      {{#Postview}}<div style="display: none">{{/Postview}}
-              {{#Preview}}<div class="image_text">{{Preview}}</div>{{/Preview}}
-      {{#Postview}}</div>{{/Postview}}
+        <!-- If no Image, keep showing preview, if there is one -->
+        {{#Postview}}<div style="display: none">{{/Postview}}
+            {{#Preview}}<div id="previewWrap" class="image_text">{{Preview}}</div>{{/Preview}}
+        {{#Postview}}</div>{{/Postview}}
 
-      {{#Postview}}<div class="image_text">{{Postview}}</div>{{/Postview}}
+        {{#Postview}}<div id="postviewWrap" class="image_text">{{Postview}}</div>{{/Postview}}
 
     {{#Description}}<div>{{Description}}</div>{{/Description}}
     </div>
@@ -68,21 +68,6 @@ window.addEventListener('resize', adjustTableFontSize);
 adjustTableFontSize();
 </script>
 
-<script> /*------------------------ Randomize Multiple Choice Qs -------*/
-  (function () {
-    const lists = document.querySelectorAll(".image_text ul");
-    lists.forEach((ul) => {
-      const items = Array.from(ul.children);
-      for (let i = items.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [items[i], items[j]] = [items[j], items[i]];
-      }
-      ul.innerHTML = "";
-      items.forEach((li) => ul.appendChild(li));
-    });
-  })();
-</script>
-
 
 <script> /*------------------------ Replace Arrow Symbols --------------*/
 (function () {
@@ -126,4 +111,61 @@ function adjustBoxTitleFontSize() {
   }
 }
 adjustBoxTitleFontSize();
+</script>
+
+
+<script> /*------------------------ Randomize Multiple Choice Qs -------*/
+(function () {
+  const KEY = "ul_shuffle_order_v1";
+
+
+  function applyOrder(ul, order) {
+    const items = Array.from(ul.children);
+    if (order.length !== items.length) return false;
+
+    ul.innerHTML = "";
+    order.forEach(i => ul.appendChild(items[i]));
+    return true;
+  }
+
+  function shuffleAndStore(ul) {
+    const items = Array.from(ul.children);
+    const order = items.map((_, i) => i);
+
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+
+    ul.innerHTML = "";
+    order.forEach(i => ul.appendChild(items[i]));
+    sessionStorage.setItem(KEY, JSON.stringify(order));
+  }
+
+  function waitForTargetUl() {
+    const wrap = postviewWrap || previewWrap;
+    const ul = wrap ? wrap.querySelector("ul") : null;
+
+    if (!ul) {
+      requestAnimationFrame(waitForTargetUl);
+      return;
+    }
+
+    const stored = sessionStorage.getItem(KEY);
+    if (stored) {
+      try {
+        const order = JSON.parse(stored);
+        if (applyOrder(ul, order)) {
+          sessionStorage.removeItem(KEY);
+          return;
+        }
+      } catch (e) {}
+    }
+
+    // Fallback: if storage missing or mismatch
+    shuffleAndStore(ul);
+  }
+
+  waitForTargetUl();
+})();
 </script>
