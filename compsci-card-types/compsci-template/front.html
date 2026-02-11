@@ -69,3 +69,17 @@ adjustTableFontSize();
   });
 })();
 </script>
+
+<script> /*------------------------ ADJUST TITLE SIZE ------------------*/
+function adjustBoxTitleFontSize() {
+  const el = document.querySelector('.box_title');
+  if (!el) return;
+
+  const len = (el.textContent || '').replace(/\s+/g, ' ').trim().length;
+  if (len > 150) {
+    el.style.fontSize = '100%';
+    el.style.padding = '10px';
+  }
+}
+adjustBoxTitleFontSize();
+</script>
