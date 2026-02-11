@@ -55,21 +55,6 @@ adjustTableFontSize();
 </script>
 
 
-<script>
-(function() {
-  const lists = document.querySelectorAll(".image_text ul");
-  lists.forEach((ul) => {
-    const items = Array.from(ul.children);
-    for (let i = items.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [items[i], items[j]] = [items[j], items[i]];
-    }
-    ul.innerHTML = "";
-    items.forEach((li) => ul.appendChild(li));
-  });
-})();
-</script>
-
 <script> /*------------------------ ADJUST TITLE SIZE ------------------*/
 function adjustBoxTitleFontSize() {
   const el = document.querySelector('.box_title');
@@ -81,5 +66,34 @@ function adjustBoxTitleFontSize() {
     el.style.padding = '10px';
   }
 }
+
 adjustBoxTitleFontSize();
+</script>
+
+<script> /*------------------------ Randomize Multiple Choice Qs -------*/
+(function () {
+  const KEY = "ul_shuffle_order_v1";
+
+  function shuffleAndStore(ul) {
+    const items = Array.from(ul.children);
+    const order = items.map((_, i) => i);
+
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+
+    ul.innerHTML = "";
+    order.forEach(i => ul.appendChild(items[i]));
+    sessionStorage.setItem(KEY, JSON.stringify(order));
+  }
+
+  function waitForUl() {
+    const ul = document.querySelector(".image_text ul");
+    if (ul) shuffleAndStore(ul);
+    else requestAnimationFrame(waitForUl);
+  }
+
+  waitForUl();
+})();
 </script>
