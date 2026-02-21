@@ -210,6 +210,7 @@ table .linenos {
   --markdown: black;
   --tools: #605F5E;
   --color: white;
+  --aws: #FF9900;
 }
 .container {
   --vis: hidden;
@@ -279,6 +280,11 @@ table .linenos {
 .container[class*="tools::firefox"] {--text: "\1F98A  Firefox";}
 .container[class*="tools::pycharm"] {--text: "PyCharm";}
 .container[class*="tools::operating-systems::windows"] {--text: "\229e  Windows";}
+.container[class*="tools::aws"] {
+  --text: "☁️ AWS";
+  --background: var(--aws);
+  --color: black;
+}
 
 
 
