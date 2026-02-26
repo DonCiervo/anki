@@ -271,6 +271,7 @@ table .linenos {
 .container[class*="tools::operating-systems::linux"] {--text: "\1F427  Linux";}
 .container[class*="tools::operating-systems::wsl"] {--text: "\229e \1F427  WSL";}
 .container[class*="tools::git"] {--text: "\1F527  Git";}
+.container[class*="tools::github"] {--text: "🐙  GitHub";}
 .container[class*="tools::docker"] {--text: "🐳 Docker";}
 .container[class*="tools::anki"] {--text: "\2605  Anki";}
 .container[class*="tools::excel"] {--text: "\1F4CA  Excel";}
